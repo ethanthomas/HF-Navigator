@@ -1,0 +1,470 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context=".Cont" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+            <TextView
+         android:id="@+id/textView1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center|top"
+         android:layout_marginTop="20dp"
+         android:gravity="center"
+         android:text="Mr. Contopoulous's Chemistry  Lab Links"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+     <Button
+         android:id="@+id/button1"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="10dp"
+         android:onClick="pre1"
+         android:text="Pre-Lab 1" />
+
+ <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre2"
+     android:text="Pre-Lab 2" />
+
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre3"
+     android:text="Pre-Lab 3" />
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre4"
+     android:text="Pre-Lab 4" />
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre5"
+     android:text="Pre-Lab 5" />
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre6"
+     android:text="Pre-Lab 6" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre7"
+     android:text="Pre-Lab 7" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre8"
+     android:text="Pre-Lab 8" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre9"
+     android:text="Pre-Lab 9" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre10"
+     android:text="Pre-Lab 10" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre11"
+     android:text="Pre-Lab 11" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre12"
+     android:text="Pre-Lab 12" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre13"
+     android:text="Pre-Lab 13" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre14"
+     android:text="Pre-Lab 14" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre15"
+     android:text="Pre-Lab 15" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre16"
+     android:text="Pre-Lab 16" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre17"
+     android:text="Pre-Lab 17" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre18"
+     android:text="Pre-Lab 18" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre19"
+     android:text="Pre-Lab 19" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre20"
+     android:text="Pre-Lab 20" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre21"
+     android:text="Pre-Lab 21" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre22"
+     android:text="Pre-Lab 22" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre23"
+     android:text="Pre-Lab 23" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre24"
+     android:text="Pre-Lab 24" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre25"
+     android:text="Pre-Lab 25" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre26"
+     android:text="Pre-Lab 26" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre27"
+     android:text="Pre-Lab 27" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="pre28"
+     android:text="Pre-Lab 28" />
+  
+   <TextView
+         android:id="@+id/textView2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:layout_marginTop="20dp"
+         android:gravity="center"
+         android:text="Lab Reports"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
+   
+     <Button
+         android:id="@+id/button1"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="20dp"
+         android:onClick="lab1"
+         android:text="Lab Report 1" />
+
+ <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab2"
+     android:text="Lab Report 2" />
+
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab3"
+     android:text="Lab Report 3" />
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab4"
+     android:text="Lab Report 4" />
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab5"
+     android:text="Lab Report 5" />
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab6"
+     android:text="Lab Report 6" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab7"
+     android:text="Lab Report 7" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab8"
+     android:text="Lab Report 8" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab9"
+     android:text="Lab Report 9" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab10"
+     android:text="Lab Report 10" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab11"
+     android:text="Lab Report 11" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab12"
+     android:text="Lab Report 12" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab13"
+     android:text="Lab Report 13" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab14"
+     android:text="Lab Report 14" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab15"
+     android:text="Lab Report 15" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab16"
+     android:text="Lab Report 16" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab17"
+     android:text="Lab Report 17" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab18"
+     android:text="Lab Report18" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab19"
+     android:text="Lab Report 19" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab20"
+     android:text="Lab Report 20" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab21"
+     android:text="Lab Report 21" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab22"
+     android:text="Lab Report 22" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab23"
+     android:text="Lab Report 23" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab24"
+     android:text="Lab Report 24" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab25"
+     android:text="Lab Report 25" />
+  
+  <Button
+     android:id="@+id/button2"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:onClick="lab26"
+     android:text="Lab Report 26" />
+  
+  
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

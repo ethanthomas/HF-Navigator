@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HF Navigator</string>
+    <string name="action_settings">About</string>
+    <string name="framgment1">Fragment 1</string>
+    <string name="framgment2">Fragment 2</string>
+    <string name="framgment3">Fragment 3</string>
+    <string name="framgment4">Fragment 4</string>
+    <string name="framgment5">Fragment 5</string>
+    <string name="drawer_open">Open the Drawer</string>
+    <string name="drawer_close">Close the Drawer</string>
+        <string name="bio">Senior Bio</string>
+   
+    
+    
+    <string-array name="fragments">
+        <item>Home</item>        
+        
+        <item>Bell Schedules</item>
+        <item>BusFinder</item>
+        <item>Midterm Schedule</item>
+        
+        <item>Teacher Directory</item>
+        
+        <item>Campus Portal Login</item>
+        <item>Castle Learning</item>
+        <item>Edmodo</item>
+        
+        
+        
+        <item>Harbinger News</item>
+        <item>HHS Library</item>
+        <item>HHS Calendar</item>
+        
+        <item>Sports</item>
+        <item>About HHS</item>
+        <item>Info</item>
+        
+        
+    </string-array>
+
+       
+    
+    
+</resources>
