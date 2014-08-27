@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-bf4d17e37ea800bcd68dfa3173ce3afedd754dda.jar"
+        jar="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/classes-a3cb8fb71166272bb863debe25440f1d91d293cc.jar"
+        jar="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
+        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/Parse-1.5.1-a8c81cb273d49547e1a9df77ae0422d8b211a73f.jar"
+        jar="/Users/user/Android/Work Projects/HFNavigator/app/src/libs/Parse-1.5.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
+    <item
+        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/YouTubeAndroidPlayerApi-4d6e2d9bd022e787503d5ea8b388614fec53c4a8.jar"
+        jar="/Users/user/Android/Work Projects/HFNavigator/app/src/libs/YouTubeAndroidPlayerApi.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="29ccfbddf99584bddbaab62c0cf50dcd1c564e43"/>
+    <item
+        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/classes-895f09836eb1a2b2296866a72201cddd3f651c24.jar"
+        jar="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/exploded-aar/HFNavigator.libraries/PagerSlidingTabStrip/unspecified/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9aaa61a88cfda85909b1a65c53af01ca057f48a1"/>
+
+</pre-dex-items>

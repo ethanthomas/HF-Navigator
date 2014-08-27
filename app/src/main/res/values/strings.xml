@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HF Navigator</string>
+    <string name="action_settings">About</string>
+    <string name="drawer_open">Open the Drawer</string>
+    <string name="drawer_close">Close the Drawer</string>
+    <string name="bio">Senior Bio</string>
+
+
+    <string-array name="fragments">
+        <item>Home</item>
+        <item>Resources</item>
+        <item>Tools</item>
+        <item>Teacher Directory</item>
+        <item>Harborfields</item>
+        <item>Sports Live Stream</item>
+
+    </string-array>
+
+
+</resources>

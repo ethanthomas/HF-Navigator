@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion '20'
+    defaultConfig {
+        applicationId 'com.hhs.hfnavigator'
+        minSdkVersion 14
+        targetSdkVersion 20
+        versionCode 32
+        versionName '3.1.0.1'
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+dependencies {
+    compile project(':libraries:PagerSlidingTabStrip')
+    compile files('src/libs/Parse-1.5.1.jar')
+    compile files('src/libs/YouTubeAndroidPlayerApi.jar')
+    // You must install or update the Support Repository through the SDK manager to use this dependency.
+    compile 'com.android.support:support-v4:20.+'
+}

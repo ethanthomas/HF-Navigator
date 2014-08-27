@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hhs.hfnavigator"
+    android:versionCode="32"
+    android:versionName="3.1.0.1">
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="20" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".core.Application"
+        android:allowBackup="true"
+        android:icon="@drawable/harbingerfrontlogo"
+        android:label="@string/app_name"
+        android:theme="@style/Home">
+        <activity
+            android:name=".core.Home"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".links.Cont"
+            android:label="Chemistry Links"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".links.Ritter"
+            android:label="Art Links"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".links.Khan"
+            android:label="Science Links"
+            android:screenOrientation="portrait" />
+        <!--<activity-->
+            <!--android:name=".teacherdirectory.TeacherList"-->
+            <!--android:label="Teacher Directory"-->
+            <!--android:screenOrientation="portrait" />-->
+        <activity
+            android:name=".teacherdirectory.TeacherDetails"
+            android:label="Teacher Details"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name="com.parse.PushService"
+            android:screenOrientation="portrait" />
+
+        <receiver android:name="com.parse.ParseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <!--<activity-->
+        <!--android:name=".core.Settings"-->
+        <!--android:label="Settings" />-->
+
+        <activity
+            android:name=".core.AboutDeveloper"
+            android:label="About"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".harbinger.LiveStream"
+            android:label="HF Sports Live Stream"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>
