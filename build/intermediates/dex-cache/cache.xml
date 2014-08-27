@@ -8,17 +8,17 @@
         revision="20.0.0"
         sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
     <item
-        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/classes-a3cb8fb71166272bb863debe25440f1d91d293cc.jar"
-        jar="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
-    <item
         dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
         jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/classes-a3cb8fb71166272bb863debe25440f1d91d293cc.jar"
+        jar="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
     <item
         dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/Parse-1.5.1-a8c81cb273d49547e1a9df77ae0422d8b211a73f.jar"
         jar="/Users/user/Android/Work Projects/HFNavigator/app/src/libs/Parse-1.5.1.jar"
@@ -36,6 +36,6 @@
         jar="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/exploded-aar/HFNavigator.libraries/PagerSlidingTabStrip/unspecified/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="9aaa61a88cfda85909b1a65c53af01ca057f48a1"/>
+        sha1="1f315bd5313262da56db0044f077420651e0c7ff"/>
 
 </pre-dex-items>
