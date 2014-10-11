@@ -26,32 +26,32 @@ import com.hhs.hfnavigator.core.DeveloperKey;
 
 public class LiveStream extends YouTubeFailureRecoveryActivity {
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.live_stream);
-      getActionBar().setDisplayHomeAsUpEnabled(true);
-      getActionBar().setHomeButtonEnabled(true);
-      getActionBar().setLogo(android.R.color.transparent);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.live_stream);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setLogo(android.R.color.transparent);
 
-      YouTubePlayerFragment youTubePlayerFragment =
-        (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_fragment);
-    youTubePlayerFragment.initialize(DeveloperKey.DEVELOPER_KEY, this);
+        YouTubePlayerFragment youTubePlayerFragment =
+                (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_fragment);
+        youTubePlayerFragment.initialize(DeveloperKey.DEVELOPER_KEY, this);
 
-  }
-
-  @Override
-  public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
-      boolean wasRestored) {
-    if (!wasRestored) {
-      player.cueVideo("Fkooc_E1gT4");
     }
-  }
 
-  @Override
-  protected YouTubePlayer.Provider getYouTubePlayerProvider() {
-    return (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_fragment);
-  }
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
+                                        boolean wasRestored) {
+        if (!wasRestored) {
+            player.cueVideo("Y5LO40a1Xlk");
+        }
+    }
+
+    @Override
+    protected YouTubePlayer.Provider getYouTubePlayerProvider() {
+        return (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_fragment);
+    }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

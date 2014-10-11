@@ -42,6 +42,8 @@ public class HarbingerFragment extends Fragment {
 
     SwipeRefreshLayout swipeRefreshLayout;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

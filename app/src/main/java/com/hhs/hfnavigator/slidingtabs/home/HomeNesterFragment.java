@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.hhs.hfnavigator.R;
-import com.hhs.hfnavigator.slidingtabs.home.BusFragment;
-import com.hhs.hfnavigator.slidingtabs.home.NotificationFragment;
 
 import java.lang.reflect.Field;
 

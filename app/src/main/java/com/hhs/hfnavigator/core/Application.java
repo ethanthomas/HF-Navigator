@@ -12,8 +12,8 @@ public class Application extends android.app.Application {
 
     public void onCreate() {
         super.onCreate();
-        Parse.initialize(this, "",
-                "");
+        Parse.initialize(this, "C9vun7KPxdDKBsVcuzwxlyRDEC83hekR9O6yeX3e",
+                "OoIEedGp2uIu0yWImnlqDTNunEPLaf0O6jTe4IgR");
         ParseAnalytics.trackAppOpened(getIntent());
         ParseUser.enableAutomaticUser();
         PushService.setDefaultPushCallback(this, Home.class);

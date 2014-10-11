@@ -12,7 +12,7 @@
         android:background="@color/ab_blue"
         android:gravity="center|top"
         app:pstsDividerColor="@android:color/transparent"
-        app:pstsIndicatorColor="#259b24"
+        app:pstsIndicatorColor="#00d96b"
         app:pstsIndicatorHeight="3dp"
         app:pstsUnderlineColor="@android:color/transparent"
         app:pstsUnderlineHeight="0dp"
