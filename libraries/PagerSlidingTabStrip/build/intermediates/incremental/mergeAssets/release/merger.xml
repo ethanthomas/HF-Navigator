@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/user/Android/Work Projects/HFNavigator/libraries/PagerSlidingTabStrip/src/main/assets" />
+        <source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/src/main/assets" />
     </dataSet>
     <dataSet config="release" >
-        <source path="/Users/user/Android/Work Projects/HFNavigator/libraries/PagerSlidingTabStrip/src/release/assets" />
+        <source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/src/release/assets" />
     </dataSet>
 
 </merger>

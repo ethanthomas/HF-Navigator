@@ -5,4 +5,4 @@
     <item android:state_focused="true" android:drawable="@color/background_tab_pressed"/>
     <item android:drawable="@android:color/transparent"/>
 
-</selector><!-- From: file:/Users/user/Android/Work%20Projects/HFNavigator/libraries/PagerSlidingTabStrip/res/drawable/background_tab.xml --><!-- From: file:/Users/user/Android/Work%20Projects/HFNavigator/libraries/PagerSlidingTabStrip/build/intermediates/bundles/debug/res/drawable/background_tab.xml -->
+</selector><!-- From: file:/Users/user/Android/Work%20Projects/HF-Navigator/libraries/PagerSlidingTabStrip/res/drawable/background_tab.xml --><!-- From: file:/Users/user/Android/Work%20Projects/HF-Navigator/libraries/PagerSlidingTabStrip/build/intermediates/bundles/debug/res/drawable/background_tab.xml -->

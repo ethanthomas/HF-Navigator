@@ -2,14 +2,14 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/user/Android/Work Projects/HFNavigator/libraries/PagerSlidingTabStrip/res" >
+        <source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/res" >
             <file
                 name="background_tab"
-                path="/Users/user/Android/Work Projects/HFNavigator/libraries/PagerSlidingTabStrip/res/drawable/background_tab.xml"
+                path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/res/drawable/background_tab.xml"
                 qualifiers=""
                 type="drawable" />
             <file
-                path="/Users/user/Android/Work Projects/HFNavigator/libraries/PagerSlidingTabStrip/res/values/attrs.xml"
+                path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/res/values/attrs.xml"
                 qualifiers="" >
                 <declare-styleable name="PagerSlidingTabStrip" >
                     <attr
@@ -48,17 +48,17 @@
                 </declare-styleable>
             </file>
             <file
-                path="/Users/user/Android/Work Projects/HFNavigator/libraries/PagerSlidingTabStrip/res/values/colors.xml"
+                path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/res/values/colors.xml"
                 qualifiers="" >
                 <color name="background_tab_pressed" >#455a64
                 </color>
             </file>
         </source>
-        <source path="/Users/user/Android/Work Projects/HFNavigator/libraries/PagerSlidingTabStrip/build/generated/res/rs/release" />
-        <source path="/Users/user/Android/Work Projects/HFNavigator/libraries/PagerSlidingTabStrip/build/generated/res/generated/release" />
+        <source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/build/generated/res/rs/release" />
+        <source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/build/generated/res/generated/release" />
     </dataSet>
     <dataSet config="release" >
-        <source path="/Users/user/Android/Work Projects/HFNavigator/libraries/PagerSlidingTabStrip/src/release/res" />
+        <source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/src/release/res" />
     </dataSet>
 
 </merger>

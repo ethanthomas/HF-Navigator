@@ -2,40 +2,40 @@
 <pre-dex-items>
 
     <item
-        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-bf4d17e37ea800bcd68dfa3173ce3afedd754dda.jar"
-        jar="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
-    <item
-        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
+        dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
         jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
     <item
-        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/classes-a3cb8fb71166272bb863debe25440f1d91d293cc.jar"
-        jar="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
-    <item
-        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/Parse-1.5.1-a8c81cb273d49547e1a9df77ae0422d8b211a73f.jar"
-        jar="/Users/user/Android/Work Projects/HFNavigator/app/src/libs/Parse-1.5.1.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
-    <item
-        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/YouTubeAndroidPlayerApi-4d6e2d9bd022e787503d5ea8b388614fec53c4a8.jar"
-        jar="/Users/user/Android/Work Projects/HFNavigator/app/src/libs/YouTubeAndroidPlayerApi.jar"
+        dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/debug/YouTubeAndroidPlayerApi-8e35fc429f60ea2e385a2f8ec244329537ad6283.jar"
+        jar="/Users/user/Android/Work Projects/HF-Navigator/app/src/libs/YouTubeAndroidPlayerApi.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="29ccfbddf99584bddbaab62c0cf50dcd1c564e43"/>
     <item
-        dex="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/pre-dexed/debug/classes-895f09836eb1a2b2296866a72201cddd3f651c24.jar"
-        jar="/Users/user/Android/Work Projects/HFNavigator/app/build/intermediates/exploded-aar/HFNavigator.libraries/PagerSlidingTabStrip/unspecified/classes.jar"
+        dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/debug/classes-36d1a6ecfe1de4fa0fdcb45ba226d083922b0cfd.jar"
+        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="1f315bd5313262da56db0044f077420651e0c7ff"/>
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/debug/classes-bcbf43d8ac7066c14843869fbfe8ca903d496859.jar"
+        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/HF-Navigator.libraries/PagerSlidingTabStrip/unspecified/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="72bbcb1e2760621fe049687b991d6080358ecb05"/>
+    <item
+        dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-69b9fd783f259489b0b49fcffe05d137eeaef195.jar"
+        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/debug/Parse-1.5.1-64b44874afa2584a8b6eed57599f30f9b8fd6d33.jar"
+        jar="/Users/user/Android/Work Projects/HF-Navigator/app/src/libs/Parse-1.5.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
 
 </pre-dex-items>

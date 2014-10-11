@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/Users/user/Android/Work%20Projects/HFNavigator/libraries/PagerSlidingTabStrip/build/intermediates/bundles/debug/res/values/values.xml -->
+    <!-- From: file:/Users/user/Android/Work%20Projects/HF-Navigator/libraries/PagerSlidingTabStrip/build/intermediates/bundles/debug/res/values/values.xml -->
     <eat-comment />
 
     <color name="background_tab_pressed">#455a64</color>
