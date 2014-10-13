@@ -43,40 +43,37 @@
 
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="285dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/drawer"
         android:layout_gravity="start"
-        android:background="#f5f5f5"
-        >
+        android:background="#f5f5f5">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:orientation="vertical"
-            android:background="@drawable/school">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/harbingerfrontlogo"
-                android:layout_gravity="left"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp" />
+            android:layout_height="126dp"
+            android:orientation="horizontal"
+            android:background="@color/ab_blue">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="HF Navigator"
-                android:fontFamily="sans-serif"
+                android:fontFamily="sans-serif-condensed"
                 android:textSize="20sp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="35dp"
                 android:textColor="#ededed"
-                android:layout_marginTop="10dp"
+                android:textStyle="bold"
                 android:layout_gravity="center|left" />
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/harbingerfrontlogo"
+                android:layout_gravity="center"
+                android:layout_marginLeft="25dp" />
 
         </LinearLayout>
 
@@ -90,15 +87,14 @@
             android:dividerHeight="0dp" />
 
 
-
         <!--<ListView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/listView2"-->
-            <!--android:background="#f5f5f5"-->
-            <!--android:choiceMode="singleChoice"-->
-            <!--android:divider="@android:color/transparent"-->
-            <!--android:dividerHeight="0dp" />-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/listView2"-->
+        <!--android:background="#f5f5f5"-->
+        <!--android:choiceMode="singleChoice"-->
+        <!--android:divider="@android:color/transparent"-->
+        <!--android:dividerHeight="0dp" />-->
 
 
     </LinearLayout>

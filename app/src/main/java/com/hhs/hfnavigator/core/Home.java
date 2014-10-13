@@ -57,8 +57,7 @@ public class Home extends FragmentActivity {
 
         getActionBar().hide();
 
-        // --------------------------------Nav
-        // Drawer--------------------------------------------------------------
+        // --------------------------------Nav Drawer--------------------------------------------------------------
 
         mTitle = mDrawerTitle = getTitle();
         mFragmentTitles = getResources().getStringArray(R.array.fragments);
@@ -163,7 +162,6 @@ public class Home extends FragmentActivity {
 //        });
 
 
-
     }
 
     @Override
@@ -265,8 +263,7 @@ public class Home extends FragmentActivity {
 
         }
 
-        if (position == 6 || position == 7){
-
+        if (position == 6 || position == 7) {
 
 
         } else {
@@ -371,8 +368,6 @@ public class Home extends FragmentActivity {
             View v;
 
 
-
-
             inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View itemView = inflater.inflate(R.layout.new_drawer_list_item, parent,
@@ -392,7 +387,6 @@ public class Home extends FragmentActivity {
             imgIcon.setImageResource(mIcon[position]);
 
 
-
             if (position == 5) {
 
 
@@ -401,8 +395,7 @@ public class Home extends FragmentActivity {
 
             }
 
-            if (position == 6 || position == 7){
-
+            if (position == 6 || position == 7) {
 
 
             } else {
