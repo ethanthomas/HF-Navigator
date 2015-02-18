@@ -7,7 +7,6 @@
     <string name="drawer_close">Close the Drawer</string>
     <string name="bio">Senior Bio</string>
 
-
     <string-array name="fragments">
         <item>Home</item>
         <item>Resources</item>
@@ -15,10 +14,13 @@
         <item>Teacher Directory</item>
         <item>Harborfields</item>
         <item>Sports Live Stream</item>
+        <item>Harbinger News</item>
         <item>Send Feedback</item>
         <item>About the Developer</item>
-
     </string-array>
 
+    <string name="title_activity_notification">NotificationActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_teacher">TeacherActivity</string>
 
 </resources>

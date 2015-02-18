@@ -23,10 +23,11 @@ OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
 
 package com.hhs.hfnavigator.core;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,16 +35,20 @@ import android.widget.Button;
 
 import com.hhs.hfnavigator.R;
 
-public class AboutDeveloper extends Activity {
+public class AboutDeveloper extends ActionBarActivity {
+
+    Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.about_developer);
+        setContentView(R.layout.dialog_about);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setIcon(R.drawable.invisible);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.invisible_0);
 
         Button website = (Button) findViewById(R.id.website);
         Button gplus = (Button) findViewById(R.id.gplus);

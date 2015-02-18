@@ -43,7 +43,7 @@ public class MidRegFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.webfragment, null);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_webview, null);
 
        final WebView webView = (WebView) root.findViewById(R.id.webView);
         if (webView != null) {

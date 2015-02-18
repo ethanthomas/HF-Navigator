@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="main">#63C3FF</color>
-    <color name="red">#C67171</color>
-    <color name="actionbar_title_color">@android:color/white</color>
-    <color name="blue">#134e72</color>
-    <color name="blue2">#37474f</color>
-    <color name="blue3">#546e7a</color>
-    <color name="ab_blue">#263238</color>
+    <color name="grey_blue_950">#445057</color>
+    <color name="grey_blue_800">#4B5961</color>
+    <color name="off_white">#ededed</color>
 </resources>

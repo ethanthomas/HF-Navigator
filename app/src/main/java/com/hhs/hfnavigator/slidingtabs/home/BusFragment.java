@@ -24,7 +24,6 @@ OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
 package com.hhs.hfnavigator.slidingtabs.home;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
@@ -36,60 +35,43 @@ import android.webkit.WebViewClient;
 
 import com.hhs.hfnavigator.R;
 import com.hhs.hfnavigator.utils.CheckNetwork;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
-public class BusFragment extends Fragment{
-	
-	SwipeRefreshLayout swipeRefreshLayout;
- 
+public class BusFragment extends Fragment {
+
+    SwipeRefreshLayout swipeRefreshLayout;
+    ProgressWheel progressWheel;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.webfragment, null);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_webview, null);
 
         swipeRefreshLayout = (SwipeRefreshLayout) root.findViewById(R.id.swipe);
-
-        swipeRefreshLayout.setRefreshing(true);
-        final Handler handler = new Handler();
-
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        }, 1500);
+        progressWheel = (ProgressWheel) root.findViewById(R.id.webViewProgress);
 
         final WebView webView = (WebView) root.findViewById(R.id.webView);
         if (webView != null) {
-            webView.setWebViewClient(new WebViewClient());
             webView.loadUrl("http://vqr.mx/DmkD");
             webView.getSettings().setJavaScriptEnabled(true);
             webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
             webView.getSettings().setBuiltInZoomControls(true);
             webView.getSettings().setDisplayZoomControls(false);
-        }
+            webView.setWebViewClient(new WebViewClient() {
 
+                public void onPageFinished(WebView view, String url) {
+                    progressWheel.stopSpinning();
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            });
+        }
+        progressWheel.spin();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 if (CheckNetwork.isInternetAvailable(getActivity())) {
                     webView.reload();
-
-                    final Handler handler = new Handler();
-
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            swipeRefreshLayout.setRefreshing(false);
-                        }
-                    }, 1500);
-                } else {
-
-                    swipeRefreshLayout.setRefreshing(false);
                 }
-
-
             }
         });
 
@@ -100,5 +82,5 @@ public class BusFragment extends Fragment{
 
         return root;
     }
- 
+
 }

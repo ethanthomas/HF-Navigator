@@ -1,14 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="2" >
-
-    <dataSet config="20.0.0" >
-        <source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/assets" />
-    </dataSet>
-    <dataSet config="debug" >
-        <source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/build/intermediates/bundles/debug/assets" />
-    </dataSet>
-    <dataSet config="main" >
-        <source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/src/androidTest/assets" />
-    </dataSet>
-
-</merger>
+<merger version="3"><dataSet config="21.0.3"><source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/assets"/></dataSet><dataSet config="debug"><source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/build/intermediates/bundles/debug/assets"/></dataSet><dataSet config="main"><source path="/Users/user/Android/Work Projects/HF-Navigator/libraries/PagerSlidingTabStrip/src/androidTest/assets"/></dataSet></merger>

@@ -34,14 +34,12 @@ import android.webkit.WebViewClient;
 
 import com.hhs.hfnavigator.R;
 
-public class Fragment_Sports extends Fragment{
+public class Fragment_Sports extends Fragment {
 
-
- 
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.webfragment, null);
-        
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_webview, null);
+
+
         WebView webView = (WebView) root.findViewById(R.id.webView);
 	    if (webView != null) {
 		webView.setWebViewClient(new WebViewClient());

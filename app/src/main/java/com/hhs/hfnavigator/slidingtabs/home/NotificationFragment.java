@@ -1,44 +1,27 @@
-/*License
-
-THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS
-OF THIS CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE").
-THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW.
-ANY USE OF THE WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE
-OR COPYRIGHT LAW IS PROHIBITED.
-
-Creative Commons License
-
-This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License;
-you may not use this work except in compliance with the License.
-
-You may obtain a copy of the License in the LICENSE file,
-or at http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US
-
-BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE,
-YOU ACCEPT AND AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE.
-TO THE EXTENT THIS LICENSE MAY BE CONSIDERED TO BE A CONTRACT,
-THE LICENSOR GRANTS YOU THE RIGHTS CONTAINED HERE IN CONSIDERATION
-OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
-*/
-
 package com.hhs.hfnavigator.slidingtabs.home;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.Pair;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.hhs.hfnavigator.R;
 import com.hhs.hfnavigator.utils.CheckNetwork;
 import com.hhs.hfnavigator.utils.ServiceHandler;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,12 +33,11 @@ import org.xml.sax.InputSource;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class NotificationFragment extends Fragment {
+public class NotificationFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     String URL = "http://www.harbingernews.net/notification_center.json";
     String URL2 = "http://www.harbingernews.net/days.xml";
@@ -65,56 +47,48 @@ public class NotificationFragment extends Fragment {
 
     NodeList nodelist;
 
-
     SwipeRefreshLayout swipeRefreshLayout;
+    ProgressWheel progressWheel;
 
+    public static ArrayList<NotifcationItem> notificationList;
 
-    ArrayList<HashMap<String, String>> List;
-
-    TextView textview, internet;
+    TextView textview, internet, time;
+    View reveal;
     ListAdapter adapter;
 
     View header;
     ListView lv;
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle b) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle b) {
 
-        View v = inflater.inflate(R.layout.listview_main, container, false);
-
+        View v = inflater.inflate(R.layout.listview, container, false);
 
         internet = (TextView) v.findViewById(R.id.noInternet);
-
-
+//        time = (TextView) v.findViewById(R.id.notificationView_time);
+//        reveal = v.findViewById(R.id.reveal_view);
         swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipe);
 
+        header = getActivity().getLayoutInflater().inflate(R.layout.header_day, null);
 
-        header = getActivity().getLayoutInflater().inflate(R.layout.a_b_header, null);
+        progressWheel = (ProgressWheel) v.findViewById(R.id.notificationProgress);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
 
                 if (CheckNetwork.isInternetAvailable(getActivity())) {
-
                     internet.setVisibility(View.GONE);
 
                     new Get().execute();
+
                     lv.removeHeaderView(header);
-
                     lv.addHeaderView(header);
-
-
                 } else {
-
-
                     lv.setAdapter(null);
                     lv.removeHeaderView(header);
                     swipeRefreshLayout.setRefreshing(false);
                     internet.setVisibility(View.VISIBLE);
-
                 }
 
             }
@@ -127,25 +101,8 @@ public class NotificationFragment extends Fragment {
 
         lv = (ListView) v.findViewById(R.id.listview);
 
+        lv.setOnItemClickListener(this);
 
-//		/*
-//		 * lv.setOnItemClickListener(new OnItemClickListener() {
-//		 *
-//		 * @Override public void onItemClick(AdapterView<?> parent, View view,
-//		 * int position, long id) { String title = ((TextView)
-//		 * view.findViewById(R.id.content)) .getText().toString(); String body =
-//		 * ((TextView) view.findViewById(R.id.)) .getText().toString(); String
-//		 * author = ((TextView) view.findViewById(R.id.author))
-//		 * .getText().toString();
-//		 *
-//		 * Intent in = new Intent(getApplicationContext(),
-//		 * SingleArticleActivity.class); in.putExtra("title", title);
-//		 * in.putExtra("body", body); in.putExtra("author", author);
-//		 *
-//		 * startActivity(in);
-//		 *
-//		 * } });
-//		 */
         if (CheckNetwork.isInternetAvailable(getActivity())) {
 
             internet.setVisibility(View.GONE);
@@ -155,7 +112,7 @@ public class NotificationFragment extends Fragment {
             lv.addHeaderView(header);
 
             new Get().execute();
-
+            progressWheel.spin();
 
         } else {
 
@@ -164,22 +121,43 @@ public class NotificationFragment extends Fragment {
             swipeRefreshLayout.setRefreshing(false);
 
             internet.setVisibility(View.VISIBLE);
-
-
         }
-
         return v;
     }
 
-    private class Get extends AsyncTask<Void, Void, Void> {
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
+        if (position != 0) {
+            NotifcationItem notifcationItem = (NotifcationItem) adapterView.getItemAtPosition(position);
+
+            Intent intent = new Intent(getActivity(), NotificationActivity.class);
+            intent.putExtra("notification", notifcationItem.getName());
+            intent.putExtra("time", notifcationItem.getTime());
+
+            ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    getActivity(),
+
+                    new Pair<View, String>(view.findViewById(R.id.content),
+                            NotificationActivity.VIEW_CONTENT)
+            );
+
+            ActivityCompat.startActivity(getActivity(), intent, activityOptions.toBundle());
+
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+//                getActivity().getWindow().setExitTransition(new Fade());
+
+        }
+    }
+
+
+    private class Get extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             swipeRefreshLayout.setRefreshing(true);
-            List = new ArrayList<HashMap<String, String>>();
-
+            notificationList = new ArrayList<NotifcationItem>();
         }
 
         protected Void doInBackground(Void... arg0) {
@@ -187,9 +165,8 @@ public class NotificationFragment extends Fragment {
 
             String jsonStr = sh.makeServiceCall(URL, ServiceHandler.GET);
 
-
             if (jsonStr != null)
-                Log.e("nf", jsonStr);
+                Log.d("JSON String = ", jsonStr);
 
             if (jsonStr != null) {
 
@@ -203,16 +180,10 @@ public class NotificationFragment extends Fragment {
 
                         JSONObject jsonObject = object.getJSONObject("notification");
 
-
                         String content = jsonObject.getString(TAG_CONTENT);
                         String time = jsonObject.getString(TAG_TIME);
 
-                        HashMap<String, String> articleMap = new HashMap<String, String>();
-
-                        articleMap.put(TAG_CONTENT, content);
-                        articleMap.put(TAG_TIME, time);
-
-                        List.add(articleMap);
+                        notificationList.add(new NotifcationItem(content, time));
 
                     }
 
@@ -220,7 +191,7 @@ public class NotificationFragment extends Fragment {
                     e.printStackTrace();
                 }
             } else {
-                Log.e("ServiceHandler", "Couldn't get any data from the url");
+                Log.e("ServiceHandler", "Couldn't get data from the url");
             }
 
             return null;
@@ -230,12 +201,9 @@ public class NotificationFragment extends Fragment {
         public void onPostExecute(Void result) {
             super.onPostExecute(result);
 
-
             new DownloadXML().execute(URL2);
 
-
         }
-
     }
 
     private class DownloadXML extends AsyncTask<String, Void, Void> {
@@ -253,7 +221,6 @@ public class NotificationFragment extends Fragment {
                 // Locate the Tag Name
                 nodelist = doc.getElementsByTagName("day");
 
-
             } catch (Exception e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
@@ -265,34 +232,29 @@ public class NotificationFragment extends Fragment {
         @Override
         protected void onPostExecute(Void args) {
 
+            progressWheel.stopSpinning();
+            if (nodelist != null || nodelist.getLength() != 0)
+                for (int temp = 0; temp < nodelist.getLength(); temp++) {
+                    Node nNode = nodelist.item(temp);
+                    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                        org.w3c.dom.Element eElement = (org.w3c.dom.Element) nNode;
 
-//            if (nodelist == null || nodelist.getLength() == 0)
-            for (int temp = 0; temp < nodelist.getLength(); temp++) {
-                Node nNode = nodelist.item(temp);
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                    org.w3c.dom.Element eElement = (org.w3c.dom.Element) nNode;
+                        lv = (ListView) getActivity().findViewById(R.id.listview);
 
+                        adapter = new Adapter();
 
-                    lv = (ListView) getView().findViewById(R.id.listview);
+                        lv.setAdapter(adapter);
 
-                    adapter = new SimpleAdapter(getActivity(), List,
-                            R.layout.listview_item, new String[]{TAG_CONTENT,
-                            TAG_TIME}, new int[]{R.id.content, R.id.time}
-                    );
+                        swipeRefreshLayout.setRefreshing(false);
 
-                    lv.setAdapter(adapter);
+                        textview = (TextView) getView().findViewById(R.id.abTv);
+                        textview.setText(getNode("aorb", eElement).toString());
 
-                    swipeRefreshLayout.setRefreshing(false);
-
-
-                    textview = (TextView) getView().findViewById(R.id.abTv);
-                    textview.setText(getNode("aorb", eElement).toString());
-
-                    Log.d("", getNode("aorb", eElement));
+                        Log.d("", getNode("aorb", eElement));
 
 
+                    }
                 }
-            }
         }
     }
 
@@ -303,4 +265,75 @@ public class NotificationFragment extends Fragment {
         return nValue.getNodeValue();
     }
 
+
+    private class Adapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return notificationList.size();
+        }
+
+        @Override
+        public NotifcationItem getItem(int position) {
+            return notificationList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return getItem(position).getId();
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup viewGroup) {
+            if (view == null) {
+                view = getActivity().getLayoutInflater().inflate(R.layout.list_item_notification, viewGroup, false);
+            }
+
+            final NotifcationItem notifcationItem = getItem(position);
+
+            // Set the TextView's contents
+            TextView content = (TextView) view.findViewById(R.id.content);
+            TextView time = (TextView) view.findViewById(R.id.time);
+
+            content.setText(notifcationItem.getName());
+            time.setText(notifcationItem.getTime());
+
+            return view;
+        }
+    }
+
+//    public void revealToggle(final View v) {
+//
+//        Animator reveal;
+//
+//        int cx = (v.getLeft() + v.getRight()) / 2;
+//        int cy = (v.getTop() + v.getBottom()) / 2;
+//        float radius = Math.max(v.getWidth(), v.getHeight()) * 2.0f;
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+//            if (v.getVisibility() == View.INVISIBLE || v.getVisibility() == View.GONE) {
+//                v.setVisibility(View.VISIBLE);
+//                reveal = ViewAnimationUtils.createCircularReveal(
+//                        v, cx, cy, 0, radius);
+//                reveal.setInterpolator(new AccelerateInterpolator());
+//
+//                reveal.setDuration(700);
+//                reveal.start();
+//            } else {
+//                reveal = ViewAnimationUtils.createCircularReveal(
+//                        v, cx, cy, radius, 0);
+//                reveal.addListener(new AnimatorListenerAdapter() {
+//                    @Override
+//                    public void onAnimationEnd(Animator animation) {
+//                        v.setVisibility(View.INVISIBLE);
+//                    }
+//                });
+//
+//                reveal.setInterpolator(new DecelerateInterpolator());
+//
+//                reveal.setDuration(700);
+//                reveal.start();
+//
+//            }
+//    }
 }

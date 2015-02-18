@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.hhs.hfnavigator.R;
 import com.hhs.hfnavigator.customViews.TouchImageView;
 import com.hhs.hfnavigator.utils.CheckNetwork;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -21,41 +22,19 @@ import java.net.URL;
 public class CalendarFragment extends Fragment {
 
 
-    SwipeRefreshLayout swipeRefreshLayout;
     TouchImageView imageView;
-
+    ProgressWheel progressWheel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.calendar_fragment, null);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_calendar, null);
 
         imageView = (TouchImageView) root.findViewById(R.id.cal);
 
-        swipeRefreshLayout = (SwipeRefreshLayout) root.findViewById(R.id.swipe);
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                if (CheckNetwork.isInternetAvailable(getActivity())) {
-
-                    new Get().execute();
-
-                } else {
-
-                    swipeRefreshLayout.setRefreshing(false);
-                }
-
-
-            }
-        });
-
-        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_red_light,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light);
+        progressWheel = (ProgressWheel) root.findViewById(R.id.calendarProgress);
 
         new Get().execute();
-
+        progressWheel.spin();
         return root;
 
     }
@@ -69,8 +48,6 @@ public class CalendarFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            swipeRefreshLayout.setRefreshing(true);
-
         }
 
         protected Void doInBackground(Void... arg0) {
@@ -92,11 +69,9 @@ public class CalendarFragment extends Fragment {
         public void onPostExecute(Void result) {
             super.onPostExecute(result);
 
-            swipeRefreshLayout.setRefreshing(false);
-
             imageView.setImageBitmap(bmp);
 
-            swipeRefreshLayout.setEnabled(false);
+            progressWheel.stopSpinning();
         }
 
     }

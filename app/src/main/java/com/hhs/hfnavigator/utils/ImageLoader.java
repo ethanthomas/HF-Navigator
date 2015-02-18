@@ -2,7 +2,6 @@ package com.hhs.hfnavigator.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.widget.ImageView;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
