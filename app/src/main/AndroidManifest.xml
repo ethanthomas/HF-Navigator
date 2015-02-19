@@ -45,21 +45,17 @@
         </receiver>
 
         <activity
-            android:name=".core.AboutDeveloper"
-            android:label="About"
-            android:theme="@style/Home" />
-        <activity
             android:name=".harbinger.LiveStream"
             android:label="HF Sports Live Stream"
             android:screenOrientation="portrait"
-            android:theme="@style/Home" />
+            android:theme="@style/Transparent" />
         <activity
             android:name=".harbinger.articles.SingleArticleActivity"
-            android:theme="@style/Home" />
+            android:theme="@style/Transparent" />
         <activity
             android:name=".slidingtabs.home.NotificationActivity"
-            android:label="@string/title_activity_notification"
-            android:theme="@style/Home" />
+            android:label=""
+            android:theme="@style/Transparent" />
         <activity
             android:name=".teacherdirectory.TeacherActivity"
             android:label=""

@@ -1,19 +1,5 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="Home" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@color/off_white</item>
-        <item name="android:icon">@drawable/invisible_0</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:colorPrimary">@color/grey_blue_800</item>
-        <item name="android:colorPrimaryDark">@color/grey_blue_950</item>
-        <item name="android:colorControlHighlight">#8FB2B2</item>
-        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-        <item name="android:windowActivityTransitions">true</item>
-        <item name="android:textColorSecondary">#ffffff</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-    </style>
-
     <style name="Transparent" parent="Theme.AppCompat">
         <item name="android:windowBackground">@color/off_white</item>
         <item name="android:icon">@drawable/invisible_0</item>

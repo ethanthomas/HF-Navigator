@@ -20,7 +20,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +50,7 @@ import me.drakeet.materialdialog.MaterialDialog;
 
 public class Home extends ActionBarActivity {
 
+    //Drawer objects
     DrawerLayout mDrawerLayout;
     ListView mLeftDrawer;
     ActionBarDrawerToggle mDrawerToggle;
@@ -60,18 +60,21 @@ public class Home extends ActionBarActivity {
     CharSequence mTitle;
     String[] mFragmentTitles;
 
+    //Stylized objects
     Toolbar toolbar;
     Window window;
+    RevealColorView reveal;
 
+    //Pager Tabs Objects
     ViewPager pager;
     PagerSlidingTabStrip tabs;
+
+    //Pager Adapters
     HomeAdapter homeAdapter;
     ResourcesAdapter resourcesAdapter;
     ToolsAdapter toolsAdapter;
     HFAdapter hfAdapter;
     FrameLayout homeHeader;
-
-    RevealColorView reveal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,14 +90,7 @@ public class Home extends ActionBarActivity {
             window.getAttributes().flags &= (~WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
     }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(drawer);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-//    @Override
+    //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        MenuInflater inflater = getMenuInflater();
 //        inflater.inflate(R.menu.home, menu);
@@ -131,10 +127,10 @@ public class Home extends ActionBarActivity {
     public void initializeViews() {
         toolbar = (Toolbar) findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
+        window = getWindow();
 
         mTitle = mDrawerTitle = getTitle();
         mFragmentTitles = getResources().getStringArray(R.array.fragments);
-
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mLeftDrawer = (ListView) findViewById(R.id.left_drawer);
         drawer = (LinearLayout) findViewById(R.id.drawer);
@@ -143,8 +139,6 @@ public class Home extends ActionBarActivity {
 
         tabs = (PagerSlidingTabStrip) findViewById(R.id.pagerTabStrip);
         pager = (ViewPager) findViewById(R.id.viewPager);
-
-        window = getWindow();
 
         reveal = (RevealColorView) findViewById(R.id.reveal);
 
@@ -204,9 +198,9 @@ public class Home extends ActionBarActivity {
         pager.setPageMargin(pageMargin);
 
         final int cx = (tabs.getLeft() + tabs.getRight()) / 2;
-        final int cy = isTablet(getApplicationContext()) ? calculateHeightInDp(141) : calculateHeightInDp(130);
+        final int cy = isTablet() ? calculateHeightInDp(141) : calculateHeightInDp(130);
 
-        pager.setOffscreenPageLimit(9);
+        pager.setOffscreenPageLimit(3);
 
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -215,8 +209,7 @@ public class Home extends ActionBarActivity {
             case 0:
                 pager.setVisibility(View.VISIBLE);
                 tabs.setVisibility(View.VISIBLE);
-                homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        isTablet(getApplicationContext()) ? calculateHeightInDp(141) : calculateHeightInDp(130)));
+                homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cy));
 
                 pager.setAdapter(homeAdapter);
                 tabs.setViewPager(pager);
@@ -224,7 +217,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getResources().getColor(R.color.grey_blue_800), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.grey_blue_800), 0, 440, null);
 
                     }
                 }, 400);
@@ -233,7 +226,7 @@ public class Home extends ActionBarActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(getResources().getColor(R.color.grey_blue_950));
+                            window.setStatusBarColor(getColor(R.color.grey_blue_950));
                         }
                     }, 450);
                 break;
@@ -241,8 +234,7 @@ public class Home extends ActionBarActivity {
                 if (pager.getVisibility() != View.VISIBLE || tabs.getVisibility() != View.VISIBLE) {
                     pager.setVisibility(View.VISIBLE);
                     tabs.setVisibility(View.VISIBLE);
-                    homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                            isTablet(getApplicationContext()) ? calculateHeightInDp(141) : calculateHeightInDp(130)));
+                    homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cy));
                 }
                 pager.setAdapter(resourcesAdapter);
                 tabs.setViewPager(pager);
@@ -250,7 +242,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, Color.parseColor("#3399FF"), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.blue_800), 0, 440, null);
                     }
                 }, 400);
 
@@ -258,7 +250,7 @@ public class Home extends ActionBarActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(Color.parseColor("#2d89e5"));
+                            window.setStatusBarColor(getColor(R.color.blue_950));
                         }
                     }, 450);
                 break;
@@ -266,8 +258,7 @@ public class Home extends ActionBarActivity {
                 if (pager.getVisibility() != View.VISIBLE || tabs.getVisibility() != View.VISIBLE) {
                     pager.setVisibility(View.VISIBLE);
                     tabs.setVisibility(View.VISIBLE);
-                    homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                            isTablet(getApplicationContext()) ? calculateHeightInDp(141) : calculateHeightInDp(130)));
+                    homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cy));
                 }
                 pager.setAdapter(toolsAdapter);
                 tabs.setViewPager(pager);
@@ -275,7 +266,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, Color.parseColor("#E64545"), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.red_800), 0, 440, null);
                     }
                 }, 400);
 
@@ -283,7 +274,7 @@ public class Home extends ActionBarActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(Color.parseColor("#CF3E3E"));
+                            window.setStatusBarColor(getColor(R.color.red_950));
                         }
                     }, 450);
                 break;
@@ -293,7 +284,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, Colors.materialColors[4], 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.orange_800), 0, 440, null);
                     }
                 }, 400);
 
@@ -301,7 +292,7 @@ public class Home extends ActionBarActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(Colors.materialStatusColors[4]);
+                            window.setStatusBarColor(getColor(R.color.orange_950));
                         }
                     }, 450);
                 break;
@@ -309,8 +300,7 @@ public class Home extends ActionBarActivity {
                 if (pager.getVisibility() != View.VISIBLE || tabs.getVisibility() != View.VISIBLE) {
                     pager.setVisibility(View.VISIBLE);
                     tabs.setVisibility(View.VISIBLE);
-                    homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                            isTablet(getApplicationContext()) ? calculateHeightInDp(141) : calculateHeightInDp(130)));
+                    homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cy));
                 }
                 pager.setAdapter(hfAdapter);
                 tabs.setViewPager(pager);
@@ -318,7 +308,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, Color.parseColor("#4AB86E"), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.green_800), 0, 440, null);
                     }
                 }, 400);
 
@@ -326,7 +316,7 @@ public class Home extends ActionBarActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(Color.parseColor("#43A663"));
+                            window.setStatusBarColor(getColor(R.color.green_950));
                         }
                     }, 450);
 
@@ -337,7 +327,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, Color.parseColor("#336699"), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.dark_blue_800), 0, 440, null);
                     }
                 }, 400);
 
@@ -345,7 +335,7 @@ public class Home extends ActionBarActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(Color.parseColor("#2E5C8A"));
+                            window.setStatusBarColor(getColor(R.color.dark_blue_950));
                         }
                     }, 450);
                 break;
@@ -355,7 +345,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, Color.parseColor("#4AB86E"), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.green_800), 0, 440, null);
                     }
                 }, 400);
 
@@ -363,13 +353,13 @@ public class Home extends ActionBarActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(Color.parseColor("#43A663"));
+                            window.setStatusBarColor(getColor(R.color.green_950));
                         }
                     }, 450);
                 break;
             case 7:
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                Uri data = Uri.parse("mailto:obsidiandevelopers@gmail.com" + "?subject=HF Navigator - Feedback" + "&body=");
+                Uri data = Uri.parse("mailto:ethanthomas33@gmail.com" + "?subject=HF Navigator - Feedback" + "&body=");
                 intent.setData(data);
                 startActivity(intent);
                 break;
@@ -549,8 +539,8 @@ public class Home extends ActionBarActivity {
         return hdp;
     }
 
-    public static boolean isTablet(Context context) {
-        return (context.getResources().getConfiguration().screenLayout
+    public boolean isTablet() {
+        return (getResources().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
@@ -559,5 +549,9 @@ public class Home extends ActionBarActivity {
         Uri uriUrl = Uri.parse(url);
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
         startActivity(launchBrowser);
+    }
+
+    public int getColor(int id) {
+        return getResources().getColor(id);
     }
 }

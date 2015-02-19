@@ -53,7 +53,6 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
     public static ArrayList<NotifcationItem> notificationList;
 
     TextView textview, internet, time;
-    View reveal;
     ListAdapter adapter;
 
     View header;
@@ -65,8 +64,6 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
         View v = inflater.inflate(R.layout.listview, container, false);
 
         internet = (TextView) v.findViewById(R.id.noInternet);
-//        time = (TextView) v.findViewById(R.id.notificationView_time);
-//        reveal = v.findViewById(R.id.reveal_view);
         swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipe);
 
         header = getActivity().getLayoutInflater().inflate(R.layout.header_day, null);
@@ -143,10 +140,6 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
             );
 
             ActivityCompat.startActivity(getActivity(), intent, activityOptions.toBundle());
-
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-//                getActivity().getWindow().setExitTransition(new Fade());
-
         }
     }
 
