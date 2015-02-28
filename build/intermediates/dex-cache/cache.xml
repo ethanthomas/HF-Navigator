@@ -23,13 +23,6 @@
         <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/debug/classes-9d9ac58b879e23c4e18f828a228ebd10e8582190.jar" />
     </item>
     <item
-        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.android.support/palette-v7/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="926692214530f39eaed89159237d26cdc0ae6e48">
-        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/debug/classes-c44aa2c282effff86cdeaf233cc53a7235790e35.jar" />
-    </item>
-    <item
         jar="/Users/user/Android/Work Projects/HF-Navigator/app/src/libs/Parse-1.5.1.jar"
         jumboMode="false"
         revision="20.0.0"
@@ -84,13 +77,6 @@
         revision="20.0.0"
         sha1="96436aef5f48b09aca1e0183dfcd7782aa580bd6">
         <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/debug/classes-d778f1b0a6aecdb45c6ba4d0a9e541ab601ac6cf.jar" />
-    </item>
-    <item
-        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.2.1/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="4b868b833b0887aa48c4e581558eef4f1196f6a2">
-        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/debug/classes-87864beb7d38c4133afe4fee070bf5d4f0999659.jar" />
     </item>
 
 </items>

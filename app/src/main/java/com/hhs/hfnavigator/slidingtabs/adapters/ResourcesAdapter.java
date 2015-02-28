@@ -11,7 +11,7 @@ import com.hhs.hfnavigator.slidingtabs.resources.MidRegFragment;
 
 public class ResourcesAdapter extends FragmentStatePagerAdapter {
 
-    private final String[] titles = {"Bell Schedule", "Midterm Schedule"};
+    private final String[] titles = {"Bell Schedule", "Final Exam Schedule"};
 
     public ResourcesAdapter(FragmentManager fm) {
         super(fm);
@@ -33,12 +33,9 @@ public class ResourcesAdapter extends FragmentStatePagerAdapter {
         switch (position) {
 
             case 0:
-
                 BellFragment bellFragment = new BellFragment();
                 return bellFragment;
-
             case 1:
-
                 MidRegFragment midRegFragment = new MidRegFragment();
                 return midRegFragment;
         }

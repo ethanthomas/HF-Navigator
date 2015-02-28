@@ -69,6 +69,8 @@ public class TeacherActivity extends ActionBarActivity {
         email.setText(mTeacherItem.getEmail());
         toolbar.setBackgroundColor(color);
         layout.setBackgroundColor(color);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            getWindow().setStatusBarColor(color);
     }
 
     @Override

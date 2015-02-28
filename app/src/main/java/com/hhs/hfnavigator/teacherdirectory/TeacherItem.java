@@ -75,7 +75,6 @@ public class TeacherItem {
             else
                 Log.d("Letter", " error");
         }
-
         return "A";
     }
 }

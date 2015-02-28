@@ -72,6 +72,7 @@ public class TeacherDirectoryFragment extends Fragment implements AdapterView.On
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light);
 
+        swipeRefreshLayout.setEnabled(false);
         lv.setOnItemClickListener(this);
 
         search.setOnClickListener(new View.OnClickListener() {
@@ -153,7 +154,7 @@ public class TeacherDirectoryFragment extends Fragment implements AdapterView.On
             super.onPostExecute(result);
 
             originalDirectoryList = directoryList;
-            lv = (ListView) getView().findViewById(R.id.listview);
+            lv = (ListView) getActivity().findViewById(R.id.listview);
             adapter = new Adapter();
             lv.setAdapter(adapter);
 

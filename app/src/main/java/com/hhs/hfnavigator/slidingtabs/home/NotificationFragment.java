@@ -3,10 +3,7 @@ package com.hhs.hfnavigator.slidingtabs.home;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.util.Pair;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,6 +33,8 @@ import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
+import me.drakeet.materialdialog.MaterialDialog;
 
 public class NotificationFragment extends Fragment implements AdapterView.OnItemClickListener {
 
@@ -132,14 +131,27 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
             intent.putExtra("notification", notifcationItem.getName());
             intent.putExtra("time", notifcationItem.getTime());
 
-            ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    getActivity(),
+            final MaterialDialog dialog = new MaterialDialog(getActivity());
+            dialog.setCanceledOnTouchOutside(true);
+            dialog.setTitle(notifcationItem.getTime());
+            dialog.setMessage(notifcationItem.getName());
+            dialog.setPositiveButton("OK", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
 
-                    new Pair<View, String>(view.findViewById(R.id.content),
-                            NotificationActivity.VIEW_CONTENT)
-            );
+//            ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                    getActivity(),
+//
+//                    new Pair<View, String>(view.findViewById(R.id.content),
+//                            NotificationActivity.VIEW_CONTENT)
+//            );
+//
+//            ActivityCompat.startActivity(getActivity(), intent, activityOptions.toBundle());
 
-            ActivityCompat.startActivity(getActivity(), intent, activityOptions.toBundle());
         }
     }
 

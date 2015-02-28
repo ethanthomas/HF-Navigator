@@ -38,7 +38,6 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.hhs.hfnavigator.R;
 import com.hhs.hfnavigator.constants.Colors;
 import com.hhs.hfnavigator.harbinger.LiveStreamFragment;
-import com.hhs.hfnavigator.harbinger.articles.HarbingerNewsFragment;
 import com.hhs.hfnavigator.slidingtabs.adapters.HFAdapter;
 import com.hhs.hfnavigator.slidingtabs.adapters.HomeAdapter;
 import com.hhs.hfnavigator.slidingtabs.adapters.ResourcesAdapter;
@@ -151,7 +150,7 @@ public class Home extends ActionBarActivity {
 
         mLeftDrawer.setAdapter(new CustomAdapter(this, mFragmentTitles, new int[]{R.drawable.home, R.drawable.resources,
                 R.drawable.tools, R.drawable.teacherdir, R.drawable.hf,
-                R.drawable.play, R.drawable.harbinger_outline, R.drawable.menu_feedback, R.drawable.icon_light_info}));
+                R.drawable.play, R.drawable.menu_feedback, R.drawable.icon_light_info}));
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -217,10 +216,10 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.grey_blue_800), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.grey_blue_800), 0, 340, null);
 
                     }
-                }, 400);
+                }, 300);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                     new Handler().postDelayed(new Runnable() {
@@ -228,7 +227,7 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.grey_blue_950));
                         }
-                    }, 450);
+                    }, 400);
                 break;
             case 1:
                 if (pager.getVisibility() != View.VISIBLE || tabs.getVisibility() != View.VISIBLE) {
@@ -242,9 +241,9 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.blue_800), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.blue_800), 0, 340, null);
                     }
-                }, 400);
+                }, 300);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                     new Handler().postDelayed(new Runnable() {
@@ -252,7 +251,7 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.blue_950));
                         }
-                    }, 450);
+                    }, 400);
                 break;
             case 2:
                 if (pager.getVisibility() != View.VISIBLE || tabs.getVisibility() != View.VISIBLE) {
@@ -266,9 +265,9 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.red_800), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.red_800), 0, 340, null);
                     }
-                }, 400);
+                }, 300);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                     new Handler().postDelayed(new Runnable() {
@@ -276,7 +275,7 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.red_950));
                         }
-                    }, 450);
+                    }, 400);
                 break;
             case 3:
                 newFragment = new TeacherDirectoryFragment();
@@ -284,9 +283,9 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.orange_800), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.orange_800), 0, 340, null);
                     }
-                }, 400);
+                }, 300);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                     new Handler().postDelayed(new Runnable() {
@@ -294,7 +293,7 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.orange_950));
                         }
-                    }, 450);
+                    }, 400);
                 break;
             case 4:
                 if (pager.getVisibility() != View.VISIBLE || tabs.getVisibility() != View.VISIBLE) {
@@ -308,9 +307,9 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.green_800), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.green_800), 0, 340, null);
                     }
-                }, 400);
+                }, 300);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                     new Handler().postDelayed(new Runnable() {
@@ -318,7 +317,7 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.green_950));
                         }
-                    }, 450);
+                    }, 400);
 
                 break;
             case 5:
@@ -327,9 +326,9 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.dark_blue_800), 0, 440, null);
+                        reveal.reveal(cx, cy, getColor(R.color.dark_blue_800), 0, 340, null);
                     }
-                }, 400);
+                }, 300);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                     new Handler().postDelayed(new Runnable() {
@@ -337,33 +336,33 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.dark_blue_950));
                         }
-                    }, 450);
+                    }, 400);
                 break;
+//            case 6:
+//                newFragment = new HarbingerNewsFragment();
+//
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        reveal.reveal(cx, cy, getColor(R.color.green_800), 0, 340, null);
+//                    }
+//                }, 300);
+//
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            window.setStatusBarColor(getColor(R.color.green_950));
+//                        }
+//                    }, 400);
+//                break;
             case 6:
-                newFragment = new HarbingerNewsFragment();
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.green_800), 0, 440, null);
-                    }
-                }, 400);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            window.setStatusBarColor(getColor(R.color.green_950));
-                        }
-                    }, 450);
-                break;
-            case 7:
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 Uri data = Uri.parse("mailto:ethanthomas33@gmail.com" + "?subject=HF Navigator - Feedback" + "&body=");
                 intent.setData(data);
                 startActivity(intent);
                 break;
-            case 8:
+            case 7:
                 MaterialDialog dialog = new MaterialDialog(this);
                 View view = getLayoutInflater().inflate(R.layout.dialog_about, null);
                 dialog.setContentView(view);
@@ -394,7 +393,7 @@ public class Home extends ActionBarActivity {
                 break;
         }
 
-        if (!(position == 7 || position == 8)) {
+        if (!(position == 6 || position == 7)) {
             if (newFragment != null) {
                 findViewById(R.id.content_frame).setVisibility(View.VISIBLE);
                 fm.beginTransaction().replace(R.id.content_frame, newFragment).commit();
@@ -446,8 +445,10 @@ public class Home extends ActionBarActivity {
         }
 
         public void selectItem(int selectedItem) {
-            this.selectedItem = selectedItem;
-            notifyDataSetChanged();
+            if (selectedItem != 6 && selectedItem != 7) {
+                this.selectedItem = selectedItem;
+                notifyDataSetChanged();
+            }
         }
 
         @Override
@@ -485,10 +486,10 @@ public class Home extends ActionBarActivity {
 
             imgIcon.setImageResource(mIcon[position]);
 
-            if (position == 6)
+            if (position == 5)
                 v.setVisibility(View.VISIBLE);
 
-            if (position == 7 || position == 8) {
+            if (position == 6 || position == 7) {
                 txtTitle.setTypeface(null, Typeface.BOLD);
                 txtTitle.setTextColor(Color.parseColor("#626D6D"));
             } else if (position == 5) {

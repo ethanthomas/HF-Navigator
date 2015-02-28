@@ -36,20 +36,31 @@ import android.webkit.WebViewClient;
 
 import com.hhs.hfnavigator.R;
 import com.hhs.hfnavigator.utils.CheckNetwork;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 public class LibFragment extends Fragment {
 
 
     SwipeRefreshLayout swipeRefreshLayout;
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_webview,
-                null);
+    ProgressWheel progressWheel;
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_webview, null);
+
+        progressWheel = (ProgressWheel) root.findViewById(R.id.webViewProgress);
+
+        swipeRefreshLayout = (SwipeRefreshLayout) root.findViewById(R.id.swipe);
+        swipeRefreshLayout.setEnabled(false);
+        progressWheel.spin();
         final WebView webView = (WebView) root.findViewById(R.id.webView);
         if (webView != null) {
-            webView.setWebViewClient(new WebViewClient());
+            webView.setWebViewClient(new WebViewClient() {
+
+                public void onPageFinished(WebView view, String url) {
+                    progressWheel.stopSpinning();
+                }
+            });
             webView.loadUrl("https://hscsd.follettdestiny.com/common/welcome.jsp?context=saas30_3133764");
             webView.getSettings().setJavaScriptEnabled(true);
             webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
@@ -57,48 +68,6 @@ public class LibFragment extends Fragment {
             webView.getSettings().setDisplayZoomControls(false);
 
         }
-
-        swipeRefreshLayout = (SwipeRefreshLayout) root.findViewById(R.id.swipe);
-
-        swipeRefreshLayout.setRefreshing(true);
-        final Handler handler = new Handler();
-
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        }, 1500);
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                if (CheckNetwork.isInternetAvailable(getActivity())) {
-                    webView.reload();
-
-                    final Handler handler = new Handler();
-
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            swipeRefreshLayout.setRefreshing(false);
-                        }
-                    }, 1500);
-                } else {
-
-                    swipeRefreshLayout.setRefreshing(false);
-                }
-
-
-            }
-        });
-
-        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_red_light,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light);
         return root;
     }
 
