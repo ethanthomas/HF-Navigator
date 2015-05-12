@@ -1,6 +1,5 @@
 package com.hhs.hfnavigator.slidingtabs.home;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
@@ -80,6 +80,7 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
 
                     lv.removeHeaderView(header);
                     lv.addHeaderView(header);
+
                 } else {
                     lv.setAdapter(null);
                     lv.removeHeaderView(header);
@@ -98,6 +99,21 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
         lv = (ListView) v.findViewById(R.id.listview);
 
         lv.setOnItemClickListener(this);
+
+        lv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int topRowVerticalPosition =
+                        (lv == null || lv.getChildCount() == 0) ?
+                                0 : lv.getChildAt(0).getTop();
+                swipeRefreshLayout.setEnabled(firstVisibleItem == 0 && topRowVerticalPosition >= 0);
+            }
+        });
 
         if (CheckNetwork.isInternetAvailable(getActivity())) {
 
@@ -127,9 +143,9 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
         if (position != 0) {
             NotifcationItem notifcationItem = (NotifcationItem) adapterView.getItemAtPosition(position);
 
-            Intent intent = new Intent(getActivity(), NotificationActivity.class);
-            intent.putExtra("notification", notifcationItem.getName());
-            intent.putExtra("time", notifcationItem.getTime());
+//            Intent intent = new Intent(getActivity(), NotificationActivity.class);
+//            intent.putExtra("notification", notifcationItem.getName());
+//            intent.putExtra("time", notifcationItem.getTime());
 
             final MaterialDialog dialog = new MaterialDialog(getActivity());
             dialog.setCanceledOnTouchOutside(true);
@@ -180,34 +196,25 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
                     JSONArray array = new JSONArray(jsonStr);
 
                     for (int i = 0; i < array.length(); i++) {
-
                         JSONObject object = array.getJSONObject(i);
-
                         JSONObject jsonObject = object.getJSONObject("notification");
-
                         String content = jsonObject.getString(TAG_CONTENT);
                         String time = jsonObject.getString(TAG_TIME);
-
                         notificationList.add(new NotifcationItem(content, time));
-
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             } else {
                 Log.e("ServiceHandler", "Couldn't get data from the url");
             }
-
             return null;
         }
 
         @Override
         public void onPostExecute(Void result) {
             super.onPostExecute(result);
-
             new DownloadXML().execute(URL2);
-
         }
     }
 
@@ -231,7 +238,6 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
                 e.printStackTrace();
             }
             return null;
-
         }
 
         @Override
@@ -257,7 +263,7 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
 
                         Log.d("", getNode("aorb", eElement));
 
-
+//                        Home.reveal();
                     }
                 }
         }

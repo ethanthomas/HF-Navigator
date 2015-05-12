@@ -25,7 +25,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -36,7 +35,6 @@ import android.widget.TextView;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.hhs.hfnavigator.R;
-import com.hhs.hfnavigator.constants.Colors;
 import com.hhs.hfnavigator.harbinger.LiveStreamFragment;
 import com.hhs.hfnavigator.slidingtabs.adapters.HFAdapter;
 import com.hhs.hfnavigator.slidingtabs.adapters.HomeAdapter;
@@ -47,13 +45,13 @@ import com.hhs.hfnavigator.teacherdirectory.TeacherDirectoryFragment;
 import at.markushi.ui.RevealColorView;
 import me.drakeet.materialdialog.MaterialDialog;
 
-public class Home extends ActionBarActivity {
+public class Home extends ActionBarActivity implements View.OnClickListener {
 
     //Drawer objects
-    DrawerLayout mDrawerLayout;
+    public static DrawerLayout mDrawerLayout;
     ListView mLeftDrawer;
-    ActionBarDrawerToggle mDrawerToggle;
-    LinearLayout drawer;
+    public static ActionBarDrawerToggle mDrawerToggle;
+    LinearLayout drawer, phone, guidance;
     TextView title;
     CharSequence mDrawerTitle;
     CharSequence mTitle;
@@ -62,11 +60,11 @@ public class Home extends ActionBarActivity {
     //Stylized objects
     Toolbar toolbar;
     Window window;
-    RevealColorView reveal;
+    public static RevealColorView reveal;
 
     //Pager Tabs Objects
     ViewPager pager;
-    PagerSlidingTabStrip tabs;
+    static PagerSlidingTabStrip tabs;
 
     //Pager Adapters
     HomeAdapter homeAdapter;
@@ -74,6 +72,9 @@ public class Home extends ActionBarActivity {
     ToolsAdapter toolsAdapter;
     HFAdapter hfAdapter;
     FrameLayout homeHeader;
+    public static View gradient;
+
+    ImageView headerImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,21 +90,24 @@ public class Home extends ActionBarActivity {
             window.getAttributes().flags &= (~WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
     }
-    //    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.home, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (mDrawerLayout.isDrawerOpen(drawer)) {
-                    mDrawerLayout.closeDrawer(drawer);
+
+                if (TeacherDirectoryFragment.isRevealed()) {
+                    TeacherDirectoryFragment.hide();
+                    reveal.setBackgroundColor(getColor(R.color.orange_800));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                        getWindow().setStatusBarColor(getColor(R.color.orange_950));
                 } else {
-                    mDrawerLayout.openDrawer(drawer);
+
+                    if (mDrawerLayout.isDrawerOpen(drawer)) {
+                        mDrawerLayout.closeDrawer(drawer);
+                    } else {
+                        mDrawerLayout.openDrawer(drawer);
+                    }
                 }
 //            case R.id.spin:
 //                ValueAnimator anim = ValueAnimator.ofFloat(0, 1);
@@ -127,26 +131,37 @@ public class Home extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);
         window = getWindow();
-
         mTitle = mDrawerTitle = getTitle();
         mFragmentTitles = getResources().getStringArray(R.array.fragments);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mLeftDrawer = (ListView) findViewById(R.id.left_drawer);
         drawer = (LinearLayout) findViewById(R.id.drawer);
-
         title = (TextView) findViewById(R.id.title);
-
         tabs = (PagerSlidingTabStrip) findViewById(R.id.pagerTabStrip);
         pager = (ViewPager) findViewById(R.id.viewPager);
-
         reveal = (RevealColorView) findViewById(R.id.reveal);
-
         homeHeader = (FrameLayout) findViewById(R.id.homeHeader);
+        gradient = findViewById(R.id.gradientView);
+
     }
 
     public void setupDrawer(Bundle savedInstanceState) {
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
                 GravityCompat.START);
+
+        ViewGroup header = (ViewGroup) getLayoutInflater().inflate(R.layout.header_drawer, null);
+        mLeftDrawer.addHeaderView(header, null, false);
+
+//        mLeftDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                if (position != 0) {
+//                    selectItem(position);
+//                    ((CustomAdapter) ((HeaderViewListAdapter) parent.getAdapter())).selectItem(position);
+//                }
+//            }
+//        });
 
         mLeftDrawer.setAdapter(new CustomAdapter(this, mFragmentTitles, new int[]{R.drawable.home, R.drawable.resources,
                 R.drawable.tools, R.drawable.teacherdir, R.drawable.hf,
@@ -154,14 +169,6 @@ public class Home extends ActionBarActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-        mLeftDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position);
-                ((CustomAdapter) parent.getAdapter()).selectItem(position);
-            }
-        });
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.app_name, R.string.app_name) {
             @Override
@@ -172,16 +179,22 @@ public class Home extends ActionBarActivity {
             }
         };
 
+        headerImage = (ImageView) findViewById(R.id.headerImage);
+
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         if (savedInstanceState == null) {
-            selectItem(0);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                window.setStatusBarColor(getResources().getColor(R.color.grey_blue_950));
+            selectListItem(0);
         }
 
+        phone = (LinearLayout) findViewById(R.id.hhsPhone);
+//        guidance = (LinearLayout) findViewById(R.id.hhsGuidance);
+
+        phone.setOnClickListener(this);
+
+//        guidance.setOnClickListener(this);
     }
 
-    private void selectItem(int position) {
+    private void selectListItem(int position) {
         Fragment newFragment = null;
         FragmentManager fm = getSupportFragmentManager();
 
@@ -194,10 +207,11 @@ public class Home extends ActionBarActivity {
                 TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
                         .getDisplayMetrics()
         );
+
         pager.setPageMargin(pageMargin);
 
         final int cx = (tabs.getLeft() + tabs.getRight()) / 2;
-        final int cy = isTablet() ? calculateHeightInDp(141) : calculateHeightInDp(130);
+        final int cy = isTablet() ? calculateHeightInDp(131) : calculateHeightInDp(116);
 
         pager.setOffscreenPageLimit(3);
 
@@ -216,7 +230,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.grey_blue_800), 0, 340, null);
+                        reveal.reveal(cx, cy, getColor(R.color.grey_blue_800), 0, 640, null);
 
                     }
                 }, 300);
@@ -227,7 +241,9 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.grey_blue_950));
                         }
-                    }, 400);
+                    }, 700);
+
+                headerImage.setImageDrawable(getResources().getDrawable(R.drawable.green));
                 break;
             case 1:
                 if (pager.getVisibility() != View.VISIBLE || tabs.getVisibility() != View.VISIBLE) {
@@ -241,7 +257,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.blue_800), 0, 340, null);
+                        reveal.reveal(cx, cy, getColor(R.color.blue_800), 0, 640, null);
                     }
                 }, 300);
 
@@ -251,7 +267,8 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.blue_950));
                         }
-                    }, 400);
+                    }, 700);
+                headerImage.setImageDrawable(getResources().getDrawable(R.drawable.light_blue));
                 break;
             case 2:
                 if (pager.getVisibility() != View.VISIBLE || tabs.getVisibility() != View.VISIBLE) {
@@ -265,7 +282,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.red_800), 0, 340, null);
+                        reveal.reveal(cx, cy, getColor(R.color.red_800), 0, 640, null);
                     }
                 }, 300);
 
@@ -275,7 +292,8 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.red_950));
                         }
-                    }, 400);
+                    }, 700);
+                headerImage.setImageDrawable(getResources().getDrawable(R.drawable.red));
                 break;
             case 3:
                 newFragment = new TeacherDirectoryFragment();
@@ -283,7 +301,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.orange_800), 0, 340, null);
+                        reveal.reveal(cx, cy, getColor(R.color.orange_800), 0, 640, null);
                     }
                 }, 300);
 
@@ -293,7 +311,8 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.orange_950));
                         }
-                    }, 400);
+                    }, 700);
+                headerImage.setImageDrawable(getResources().getDrawable(R.drawable.orange));
                 break;
             case 4:
                 if (pager.getVisibility() != View.VISIBLE || tabs.getVisibility() != View.VISIBLE) {
@@ -307,7 +326,7 @@ public class Home extends ActionBarActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.green_800), 0, 340, null);
+                        reveal.reveal(cx, cy, getColor(R.color.green_800), 0, 640, null);
                     }
                 }, 300);
 
@@ -317,16 +336,17 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.green_950));
                         }
-                    }, 400);
-
+                    }, 700);
+                headerImage.setImageDrawable(getResources().getDrawable(R.drawable.green));
                 break;
             case 5:
+//                newFragment = new LiveStreamFragment();
                 newFragment = new LiveStreamFragment();
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.dark_blue_800), 0, 340, null);
+                        reveal.reveal(cx, cy, getColor(R.color.dark_blue_800), 0, 640, null);
                     }
                 }, 300);
 
@@ -336,7 +356,8 @@ public class Home extends ActionBarActivity {
                         public void run() {
                             window.setStatusBarColor(getColor(R.color.dark_blue_950));
                         }
-                    }, 400);
+                    }, 700);
+                headerImage.setImageDrawable(getResources().getDrawable(R.drawable.dark_blue));
                 break;
 //            case 6:
 //                newFragment = new HarbingerNewsFragment();
@@ -412,6 +433,18 @@ public class Home extends ActionBarActivity {
         }
     }
 
+//    public static void reveal(){
+//
+//        final int cx = (tabs.getLeft() + tabs.getRight()) / 2;
+//
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                reveal.reveal(cx, cy, Color.parseColor("#336699"), 0, 340, null);
+//            }
+//        }, 300);
+//    }
+
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
@@ -466,7 +499,7 @@ public class Home extends ActionBarActivity {
             return position;
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
 
             TextView txtTitle;
             ImageView imgIcon;
@@ -475,6 +508,14 @@ public class Home extends ActionBarActivity {
             inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View itemView = inflater.inflate(R.layout.list_item_drawer, parent, false);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectItem(position);
+                    selectListItem(position);
+                }
+            });
 
             txtTitle = (TextView) itemView.findViewById(R.id.drawerItemText);
 
@@ -502,8 +543,8 @@ public class Home extends ActionBarActivity {
                 imgIcon.setColorFilter(position == selectedItem ? Color.parseColor("#4AB86E") : android.R.color.transparent);
             } else if (position == 3) {
                 txtTitle.setTypeface(null, position == selectedItem ? Typeface.BOLD : Typeface.NORMAL);
-                txtTitle.setTextColor(position == selectedItem ? Colors.materialColors[4] : Color.parseColor("#4C5858"));
-                imgIcon.setColorFilter(position == selectedItem ? Colors.materialColors[4] : android.R.color.transparent);
+                txtTitle.setTextColor(position == selectedItem ? getResources().getColor(R.color.orange_800) : Color.parseColor("#4C5858"));
+                imgIcon.setColorFilter(position == selectedItem ? getResources().getColor(R.color.orange_800) : android.R.color.transparent);
             } else if (position == 2) {
                 txtTitle.setTypeface(null, position == selectedItem ? Typeface.BOLD : Typeface.NORMAL);
                 txtTitle.setTextColor(position == selectedItem ? Color.parseColor("#E64545") : Color.parseColor("#4C5858"));
@@ -554,5 +595,36 @@ public class Home extends ActionBarActivity {
 
     public int getColor(int id) {
         return getResources().getColor(id);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+
+        switch (v.getId()) {
+            case R.id.hhsPhone:
+                intent.setData(Uri.parse("tel:(631) 754-5360"));
+                startActivity(intent);
+                break;
+
+//            case R.id.hhsGuidance:
+//                intent.setData(Uri.parse("tel:(631) 754-5360 405"));
+//                startActivity(intent);
+//            break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (TeacherDirectoryFragment.isRevealed()) {
+            TeacherDirectoryFragment.hide();
+            reveal.setBackgroundColor(getColor(R.color.orange_800));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                getWindow().setStatusBarColor(getColor(R.color.orange_950));
+        } else {
+            super.onBackPressed();
+        }
     }
 }

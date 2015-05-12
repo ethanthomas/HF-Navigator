@@ -3,7 +3,7 @@
     <string name="app_name">HF Navigator</string>
     <string-array name="fragments">
         <item>Home</item>
-        <item>Resources</item>
+        <item>Schedules</item>
         <item>Tools</item>
         <item>Teacher Directory</item>
         <item>Harborfields</item>

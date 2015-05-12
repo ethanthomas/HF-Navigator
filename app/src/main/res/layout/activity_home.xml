@@ -57,6 +57,14 @@
                 android:layout_height="match_parent"
                 android:visibility="invisible" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="11dp"
+                android:background="@drawable/gradient"
+                android:layout_gravity="top"
+                android:alpha="0.5"
+                android:id="@+id/gradientView" />
+
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"

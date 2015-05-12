@@ -7,8 +7,8 @@ android {
         applicationId 'com.hhs.hfnavigator'
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 35
-        versionName '4.0'
+        versionCode 37
+        versionName '4.0.2'
     }
     buildTypes {
         release {

@@ -24,7 +24,6 @@ OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
 package com.hhs.hfnavigator.harbinger;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
@@ -35,7 +34,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.hhs.hfnavigator.R;
-import com.hhs.hfnavigator.utils.CheckNetwork;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 public class LiveStreamFragment extends Fragment {
@@ -45,7 +43,7 @@ public class LiveStreamFragment extends Fragment {
     ProgressWheel progressWheel;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_webview, null);
 
         progressWheel = (ProgressWheel) root.findViewById(R.id.webViewProgress);
@@ -53,12 +51,14 @@ public class LiveStreamFragment extends Fragment {
         swipeRefreshLayout = (SwipeRefreshLayout) root.findViewById(R.id.swipe);
         swipeRefreshLayout.setEnabled(false);
         progressWheel.spin();
+
         final WebView webView = (WebView) root.findViewById(R.id.webView);
         if (webView != null) {
             webView.setWebViewClient(new WebViewClient() {
 
                 public void onPageFinished(WebView view, String url) {
                     progressWheel.stopSpinning();
+                    webView.setVisibility(View.VISIBLE);
                 }
             });
             webView.loadUrl("http://www.harbingernews.net/livestreams");
@@ -68,7 +68,7 @@ public class LiveStreamFragment extends Fragment {
             webView.getSettings().setDisplayZoomControls(false);
 
         }
+        webView.setVisibility(View.INVISIBLE);
         return root;
     }
-
 }

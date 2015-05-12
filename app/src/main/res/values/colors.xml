@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     //ActionBar / StatusBar pair colors
+
     <color name="grey_blue_950">#445057</color>
     <color name="grey_blue_800">#4B5961</color>
 

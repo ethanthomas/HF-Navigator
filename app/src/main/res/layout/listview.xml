@@ -19,7 +19,7 @@
                 android:layout_height="fill_parent"
                 android:cacheColorHint="@android:color/transparent"
                 android:divider="@color/primary_material_light"
-                android:dividerHeight="1dp"
+                android:dividerHeight="0dp"
                 android:footerDividersEnabled="true"
                 android:headerDividersEnabled="true"
                 android:scrollbarStyle="outsideOverlay" />

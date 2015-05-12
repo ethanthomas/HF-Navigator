@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.hhs.hfnavigator.custom.animation.RevealAnimator;
+import com.hhs.hfnavigator.customViews.codetail.animation.RevealAnimator;
 
 public class RevealLinearLayout extends LinearLayout implements RevealAnimator {
 

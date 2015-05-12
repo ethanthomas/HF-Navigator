@@ -49,6 +49,8 @@ public class BusFragment extends Fragment {
         swipeRefreshLayout = (SwipeRefreshLayout) root.findViewById(R.id.swipe);
         progressWheel = (ProgressWheel) root.findViewById(R.id.webViewProgress);
 
+        swipeRefreshLayout.setEnabled(false);
+
         final WebView webView = (WebView) root.findViewById(R.id.webView);
         if (webView != null) {
             webView.loadUrl("http://vqr.mx/DmkD");
@@ -61,24 +63,26 @@ public class BusFragment extends Fragment {
                 public void onPageFinished(WebView view, String url) {
                     progressWheel.stopSpinning();
                     swipeRefreshLayout.setRefreshing(false);
+                    webView.setVisibility(View.VISIBLE);
                 }
             });
         }
         progressWheel.spin();
+        webView.setVisibility(View.INVISIBLE);
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                if (CheckNetwork.isInternetAvailable(getActivity())) {
-                    webView.reload();
-                }
-            }
-        });
-
-        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_red_light,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light);
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                if (CheckNetwork.isInternetAvailable(getActivity())) {
+//                    webView.reload();
+//                }
+//            }
+//        });
+//
+//        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+//                android.R.color.holo_red_light,
+//                android.R.color.holo_green_light,
+//                android.R.color.holo_orange_light);
 
         return root;
     }

@@ -184,7 +184,6 @@ public class HarbingerNewsFragment extends Fragment {
             super.onPostExecute(result);
             listview.setAdapter(new Adapter());
         }
-
     }
 
     @Override

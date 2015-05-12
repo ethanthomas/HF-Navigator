@@ -11,7 +11,7 @@ import com.hhs.hfnavigator.slidingtabs.resources.MidRegFragment;
 
 public class ResourcesAdapter extends FragmentStatePagerAdapter {
 
-    private final String[] titles = {"Bell Schedule", "Final Exam Schedule"};
+    private final String[] titles = {"Bell Schedule", "Exam Schedules"};
 
     public ResourcesAdapter(FragmentManager fm) {
         super(fm);
