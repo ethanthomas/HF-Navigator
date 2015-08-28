@@ -1,8 +1,8 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +12,8 @@
         <FrameLayout
             android:id="@+id/homeHeader"
             android:layout_width="match_parent"
-            android:layout_height="130dp">
+            android:layout_height="130dp"
+            android:layout_margin="20dp">
 
             <at.markushi.ui.RevealColorView
                 android:id="@+id/reveal"
@@ -20,31 +21,26 @@
                 android:layout_height="match_parent"
                 android:background="@color/grey_blue_800" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/home_toolbar"
-                    android:layout_height="wrap_content"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:minHeight="?attr/actionBarSize"
-                    android:background="@android:color/transparent" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                <com.astuetz.PagerSlidingTabStrip
-                    android:id="@+id/pagerTabStrip"
-                    android:layout_width="fill_parent"
-                    android:layout_height="60dp"
-                    android:gravity="center|top"
-                    android:layout_marginLeft="20dp"
-                    app:pstsDividerColor="@android:color/transparent"
-                    app:pstsIndicatorColor="#ededed"
-                    app:pstsIndicatorHeight="2dp"
-                    app:pstsUnderlineColor="@android:color/transparent"
-                    app:pstsUnderlineHeight="0dp" />
-            </LinearLayout>
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/home_toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:minHeight="?attr/actionBarSize" />
 
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/pagerTabStrip"
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        app:tabGravity="center"
+                        app:tabMode="scrollable" />
+                </LinearLayout>
         </FrameLayout>
 
         <FrameLayout
@@ -58,12 +54,12 @@
                 android:visibility="invisible" />
 
             <View
+                android:id="@+id/gradientView"
                 android:layout_width="match_parent"
                 android:layout_height="11dp"
-                android:background="@drawable/gradient"
                 android:layout_gravity="top"
                 android:alpha="0.5"
-                android:id="@+id/gradientView" />
+                android:background="@drawable/gradient" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPager"
@@ -75,12 +71,12 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/drawer"
         android:layout_width="285dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/drawer"
         android:layout_gravity="start"
-        android:background="#f5f5f5">
+        android:background="#f5f5f5"
+        android:orientation="vertical">
 
         <ListView
             android:id="@+id/left_drawer"

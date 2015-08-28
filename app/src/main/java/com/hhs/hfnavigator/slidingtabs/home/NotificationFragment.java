@@ -91,10 +91,10 @@ public class NotificationFragment extends Fragment implements AdapterView.OnItem
             }
         });
 
-        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_red_light,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light);
+        swipeRefreshLayout.setColorSchemeResources(
+                R.color.grey_blue_950,
+                R.color.material_blue_grey_950,
+                R.color.green_800);
 
         lv = (ListView) v.findViewById(R.id.listview);
 

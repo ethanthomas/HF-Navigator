@@ -1,11 +1,10 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="Transparent" parent="Theme.AppCompat">
+    <style name="Transparent" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/off_white</item>
-        <item name="android:icon">@drawable/invisible_0</item>
-        <item name="windowActionBar">false</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="android:textColorSecondary">#ffffff</item>
+        <item name="colorAccent">#ffffff</item>
     </style>
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">

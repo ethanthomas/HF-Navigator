@@ -5,8 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.hhs.hfnavigator.slidingtabs.resources.BellFragment;
-import com.hhs.hfnavigator.slidingtabs.resources.MidRegFragment;
 import com.hhs.hfnavigator.slidingtabs.tools.CastleFragment;
 import com.hhs.hfnavigator.slidingtabs.tools.EdmodoFragment;
 import com.hhs.hfnavigator.slidingtabs.tools.PortalFragment;

@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.pnikosis/materialish-progress/1.4/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="77affff61296fc799ad6acd2066c1bcb8d5a7a6d">
-        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/classes-9d9ac58b879e23c4e18f828a228ebd10e8582190.jar" />
-    </item>
-    <item
         jar="/Users/user/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="20.0.0"
@@ -16,25 +9,18 @@
         <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/support-annotations-21.0.3-ade88e71586f7361c70335f85bb9a52cdc7cd579.jar" />
     </item>
     <item
-        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.3/classes.jar"
+        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.pnikosis/materialish-progress/1.4/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
-        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/classes-88c50dfd7262430e72167ca6a57ff009230c0699.jar" />
+        sha1="77affff61296fc799ad6acd2066c1bcb8d5a7a6d">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/classes-9d9ac58b879e23c4e18f828a228ebd10e8582190.jar" />
     </item>
     <item
-        jar="/Users/user/Android/Work Projects/HF-Navigator/app/src/libs/Parse-1.5.1.jar"
+        jar="/Users/user/Android/SDK/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c">
-        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/Parse-1.5.1-64b44874afa2584a8b6eed57599f30f9b8fd6d33.jar" />
-    </item>
-    <item
-        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/internal_impl-21.0.3-4b013944eae745bce16823e4e2de4cbcd166be02.jar" />
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-4310f74b67cba848d75b0fd0b736cfba2233f9fa.jar" />
     </item>
     <item
         jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
@@ -44,11 +30,116 @@
         <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/classes-7f563a5200332eeb713823ba2df144ee560bc53a.jar" />
     </item>
     <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/com.pnikosis/materialish-progress/1.4/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="77affff61296fc799ad6acd2066c1bcb8d5a7a6d">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/classes-bed07fbd8341cccafc0ac964eee69b7501923252.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/classes-80fd6f0bac1bed53c3da52905a7babe2cbe5c271.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/classes-1b5f98d9d527b851e0f2dbb7b1e12d0929e12390.jar" />
+    </item>
+    <item
+        jar="/Users/user/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/library-2.4.0-9625871c7679f09f1ff3a3f89cc2ecc2f7cf7f0e.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8646b1e69dd5d923d8866dc4311859f0fbca456c">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/classes-e49d51e8d487e749ea99f97d1d1931f88d3394fe.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/src/libs/Parse-1.10.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="181b435832725bec96c11ff568bdfbccdacab944">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/Parse-1.10.1-8f9af0f2248f480f9974d9bb1ee700c2c6abb682.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/classes-1da04534f5af428cb59d115b17974c1d1d9e3cec.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8646b1e69dd5d923d8866dc4311859f0fbca456c">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/classes-e49d51e8d487e749ea99f97d1d1931f88d3394fe.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/com.pnikosis/materialish-progress/1.4/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="77affff61296fc799ad6acd2066c1bcb8d5a7a6d">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/classes-bed07fbd8341cccafc0ac964eee69b7501923252.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/com.github.markushi/android-ui/1.2/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="96436aef5f48b09aca1e0183dfcd7782aa580bd6">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/classes-95bce5ca512a90c0f94e5f4f8e1b2f6505cad9de.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8646b1e69dd5d923d8866dc4311859f0fbca456c">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/classes-70df3634c492e20e48035ae7e68620d6e3f7d2ad.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/classes-88c50dfd7262430e72167ca6a57ff009230c0699.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/com.github.markushi/android-ui/1.2/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="96436aef5f48b09aca1e0183dfcd7782aa580bd6">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/classes-95bce5ca512a90c0f94e5f4f8e1b2f6505cad9de.jar" />
+    </item>
+    <item
         jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/classes-75475a4a2585e58eede4efe510f906b5e3bc2925.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/internal_impl-21.0.3-4b013944eae745bce16823e4e2de4cbcd166be02.jar" />
+    </item>
+    <item
+        jar="/Users/user/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-0fe70773af0f54177a73d77a5164a79aa0c1f7f0.jar" />
     </item>
     <item
         jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/HF-Navigator.libraries/PagerSlidingTabStrip/unspecified/classes.jar"
@@ -60,16 +151,16 @@
     <item
         jar="/Users/user/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
         jumboMode="false"
-        revision="20.0.0"
+        revision="22.0.1"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/library-2.4.0-9625871c7679f09f1ff3a3f89cc2ecc2f7cf7f0e.jar" />
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/library-2.4.0-9625871c7679f09f1ff3a3f89cc2ecc2f7cf7f0e.jar" />
     </item>
     <item
-        jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/me.drakeet.materialdialog/library/1.2.2/classes.jar"
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/classes.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="8646b1e69dd5d923d8866dc4311859f0fbca456c">
-        <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/classes-70df3634c492e20e48035ae7e68620d6e3f7d2ad.jar" />
+        revision="22.0.1"
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/classes-d20173f374b0f0c6629b17dd2c402f41f680cce3.jar" />
     </item>
     <item
         jar="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/exploded-aar/com.github.markushi/android-ui/1.2/classes.jar"
@@ -77,6 +168,13 @@
         revision="20.0.0"
         sha1="96436aef5f48b09aca1e0183dfcd7782aa580bd6">
         <dex dex="/Users/user/Android/Work Projects/HF-Navigator/app/build/intermediates/pre-dexed/release/classes-d778f1b0a6aecdb45c6ba4d0a9e541ab601ac6cf.jar" />
+    </item>
+    <item
+        jar="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/user/Android/Work Projects/HF-Navigator-Android/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-1b3de4e146afe529d1417a8367d3509600af1ac4.jar" />
     </item>
 
 </items>

@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hhs.hfnavigator"
-    android:versionCode="37"
-    android:versionName="4.0.2">
+    android:versionCode="39"
+    android:versionName="4.0.6">
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="22" />
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.hhs.hfnavigator.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.hhs.hfnavigator.permission.C2D_MESSAGE" />
 
     <application
         android:name=".core.Application"
@@ -23,19 +30,16 @@
         android:label="@string/app_name">
         <activity
             android:name=".core.Home"
+            android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/Transparent"
-            android:configChanges="orientation|screenSize">
+            android:theme="@style/Transparent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.parse.PushService"
-            android:screenOrientation="portrait" />
+        <service android:name="com.parse.PushService" />
 
         <receiver android:name="com.parse.ParseBroadcastReceiver">
             <intent-filter>
@@ -43,23 +47,23 @@
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-
-        <activity
-            android:name=".harbinger.LiveStream"
-            android:label="HF Sports Live Stream"
-            android:screenOrientation="portrait"
-            android:theme="@style/Transparent" />
-        <activity
-            android:name=".harbinger.articles.SingleArticleActivity"
-            android:theme="@style/Transparent" />
-        <activity
-            android:name=".slidingtabs.home.NotificationActivity"
-            android:label=""
-            android:theme="@style/Transparent" />
-        <activity
-            android:name=".teacherdirectory.TeacherActivity"
-            android:label=""
-            android:theme="@style/Transparent" />
+        <receiver
+            android:name="com.parse.ParsePushBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.DELETE" />
+                <action android:name="com.parse.push.intent.OPEN" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.hhs.hfnavigator" />
+            </intent-filter>
+        </receiver>
     </application>
-
 </manifest>

@@ -24,7 +24,6 @@ OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
 package com.hhs.hfnavigator.slidingtabs.tools;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
@@ -35,7 +34,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.hhs.hfnavigator.R;
-import com.hhs.hfnavigator.utils.CheckNetwork;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 public class PortalFragment extends Fragment {

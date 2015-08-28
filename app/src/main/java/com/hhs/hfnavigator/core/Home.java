@@ -4,19 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -33,25 +33,25 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.hhs.hfnavigator.R;
-import com.hhs.hfnavigator.harbinger.LiveStreamFragment;
 import com.hhs.hfnavigator.slidingtabs.adapters.HFAdapter;
+import com.hhs.hfnavigator.slidingtabs.adapters.HarbingerAdapter;
 import com.hhs.hfnavigator.slidingtabs.adapters.HomeAdapter;
-import com.hhs.hfnavigator.slidingtabs.adapters.ResourcesAdapter;
+import com.hhs.hfnavigator.slidingtabs.adapters.SchedulesAdapter;
 import com.hhs.hfnavigator.slidingtabs.adapters.ToolsAdapter;
+import com.hhs.hfnavigator.slidingtabs.harbinger.LiveStreamFragment;
 import com.hhs.hfnavigator.teacherdirectory.TeacherDirectoryFragment;
 
 import at.markushi.ui.RevealColorView;
 import me.drakeet.materialdialog.MaterialDialog;
 
-public class Home extends ActionBarActivity implements View.OnClickListener {
+public class Home extends AppCompatActivity implements View.OnClickListener {
 
     //Drawer objects
     public static DrawerLayout mDrawerLayout;
     ListView mLeftDrawer;
     public static ActionBarDrawerToggle mDrawerToggle;
-    LinearLayout drawer, phone, guidance;
+    LinearLayout drawer, phone;
     TextView title;
     CharSequence mDrawerTitle;
     CharSequence mTitle;
@@ -64,13 +64,14 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
 
     //Pager Tabs Objects
     ViewPager pager;
-    static PagerSlidingTabStrip tabs;
+    static TabLayout tabs;
 
     //Pager Adapters
     HomeAdapter homeAdapter;
-    ResourcesAdapter resourcesAdapter;
+    SchedulesAdapter schedulesAdapter;
     ToolsAdapter toolsAdapter;
     HFAdapter hfAdapter;
+    HarbingerAdapter harbingerAdapter;
     FrameLayout homeHeader;
     public static View gradient;
 
@@ -98,9 +99,9 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
 
                 if (TeacherDirectoryFragment.isRevealed()) {
                     TeacherDirectoryFragment.hide();
-                    reveal.setBackgroundColor(getColor(R.color.orange_800));
+                    reveal.setBackgroundColor(getColorFromResource(R.color.orange_800));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                        getWindow().setStatusBarColor(getColor(R.color.orange_950));
+                        getWindow().setStatusBarColor(getColorFromResource(R.color.orange_950));
                 } else {
 
                     if (mDrawerLayout.isDrawerOpen(drawer)) {
@@ -109,19 +110,6 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                         mDrawerLayout.openDrawer(drawer);
                     }
                 }
-//            case R.id.spin:
-//                ValueAnimator anim = ValueAnimator.ofFloat(0, 1);
-//                anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//                    @Override
-//                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
-//                        float slideOffset = (Float) valueAnimator.getAnimatedValue();
-//                        mDrawerToggle.onDrawerSlide(mDrawerLayout, slideOffset);
-//                    }
-//                });
-//                anim.setInterpolator(new DecelerateInterpolator());
-//                anim.setDuration(500);
-//                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//                anim.start();
                 return true;
         }
         return true;
@@ -137,7 +125,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
         mLeftDrawer = (ListView) findViewById(R.id.left_drawer);
         drawer = (LinearLayout) findViewById(R.id.drawer);
         title = (TextView) findViewById(R.id.title);
-        tabs = (PagerSlidingTabStrip) findViewById(R.id.pagerTabStrip);
+        tabs = (TabLayout) findViewById(R.id.pagerTabStrip);
         pager = (ViewPager) findViewById(R.id.viewPager);
         reveal = (RevealColorView) findViewById(R.id.reveal);
         homeHeader = (FrameLayout) findViewById(R.id.homeHeader);
@@ -151,17 +139,6 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
 
         ViewGroup header = (ViewGroup) getLayoutInflater().inflate(R.layout.header_drawer, null);
         mLeftDrawer.addHeaderView(header, null, false);
-
-//        mLeftDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                if (position != 0) {
-//                    selectItem(position);
-//                    ((CustomAdapter) ((HeaderViewListAdapter) parent.getAdapter())).selectItem(position);
-//                }
-//            }
-//        });
 
         mLeftDrawer.setAdapter(new CustomAdapter(this, mFragmentTitles, new int[]{R.drawable.home, R.drawable.resources,
                 R.drawable.tools, R.drawable.teacherdir, R.drawable.hf,
@@ -199,9 +176,10 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
         FragmentManager fm = getSupportFragmentManager();
 
         homeAdapter = new HomeAdapter(getSupportFragmentManager());
-        resourcesAdapter = new ResourcesAdapter(getSupportFragmentManager());
+        schedulesAdapter = new SchedulesAdapter(getSupportFragmentManager());
         toolsAdapter = new ToolsAdapter(getSupportFragmentManager());
         hfAdapter = new HFAdapter(getSupportFragmentManager());
+        harbingerAdapter = new HarbingerAdapter(getSupportFragmentManager());
 
         final int pageMargin = (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
@@ -225,12 +203,12 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                 homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cy));
 
                 pager.setAdapter(homeAdapter);
-                tabs.setViewPager(pager);
+                tabs.setupWithViewPager(pager);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.grey_blue_800), 0, 640, null);
+                        reveal.reveal(cx, cy, getColorFromResource(R.color.grey_blue_800), 0, 640, null);
 
                     }
                 }, 300);
@@ -239,7 +217,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(getColor(R.color.grey_blue_950));
+                            window.setStatusBarColor(getColorFromResource(R.color.grey_blue_950));
                         }
                     }, 700);
 
@@ -251,13 +229,13 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                     tabs.setVisibility(View.VISIBLE);
                     homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cy));
                 }
-                pager.setAdapter(resourcesAdapter);
-                tabs.setViewPager(pager);
+                pager.setAdapter(schedulesAdapter);
+                tabs.setupWithViewPager(pager);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.blue_800), 0, 640, null);
+                        reveal.reveal(cx, cy, getColorFromResource(R.color.blue_800), 0, 640, null);
                     }
                 }, 300);
 
@@ -265,7 +243,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(getColor(R.color.blue_950));
+                            window.setStatusBarColor(getColorFromResource(R.color.blue_950));
                         }
                     }, 700);
                 headerImage.setImageDrawable(getResources().getDrawable(R.drawable.light_blue));
@@ -277,12 +255,12 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                     homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cy));
                 }
                 pager.setAdapter(toolsAdapter);
-                tabs.setViewPager(pager);
+                tabs.setupWithViewPager(pager);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.red_800), 0, 640, null);
+                        reveal.reveal(cx, cy, getColorFromResource(R.color.red_800), 0, 640, null);
                     }
                 }, 300);
 
@@ -290,7 +268,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(getColor(R.color.red_950));
+                            window.setStatusBarColor(getColorFromResource(R.color.red_950));
                         }
                     }, 700);
                 headerImage.setImageDrawable(getResources().getDrawable(R.drawable.red));
@@ -301,7 +279,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.orange_800), 0, 640, null);
+                        reveal.reveal(cx, cy, getColorFromResource(R.color.orange_800), 0, 640, null);
                     }
                 }, 300);
 
@@ -309,7 +287,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(getColor(R.color.orange_950));
+                            window.setStatusBarColor(getColorFromResource(R.color.orange_950));
                         }
                     }, 700);
                 headerImage.setImageDrawable(getResources().getDrawable(R.drawable.orange));
@@ -321,12 +299,12 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                     homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cy));
                 }
                 pager.setAdapter(hfAdapter);
-                tabs.setViewPager(pager);
+                tabs.setupWithViewPager(pager);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.green_800), 0, 640, null);
+                        reveal.reveal(cx, cy, getColorFromResource(R.color.green_800), 0, 640, null);
                     }
                 }, 300);
 
@@ -334,19 +312,24 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(getColor(R.color.green_950));
+                            window.setStatusBarColor(getColorFromResource(R.color.green_950));
                         }
                     }, 700);
                 headerImage.setImageDrawable(getResources().getDrawable(R.drawable.green));
                 break;
             case 5:
-//                newFragment = new LiveStreamFragment();
-                newFragment = new LiveStreamFragment();
+                if (pager.getVisibility() != View.VISIBLE || tabs.getVisibility() != View.VISIBLE) {
+                    pager.setVisibility(View.VISIBLE);
+                    tabs.setVisibility(View.VISIBLE);
+                    homeHeader.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, cy));
+                }
+                pager.setAdapter(harbingerAdapter);
+                tabs.setupWithViewPager(pager);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        reveal.reveal(cx, cy, getColor(R.color.dark_blue_800), 0, 640, null);
+                        reveal.reveal(cx, cy, getColorFromResource(R.color.dark_blue_800), 0, 640, null);
                     }
                 }, 300);
 
@@ -354,29 +337,11 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            window.setStatusBarColor(getColor(R.color.dark_blue_950));
+                            window.setStatusBarColor(getColorFromResource(R.color.dark_blue_950));
                         }
                     }, 700);
                 headerImage.setImageDrawable(getResources().getDrawable(R.drawable.dark_blue));
                 break;
-//            case 6:
-//                newFragment = new HarbingerNewsFragment();
-//
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        reveal.reveal(cx, cy, getColor(R.color.green_800), 0, 340, null);
-//                    }
-//                }, 300);
-//
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            window.setStatusBarColor(getColor(R.color.green_950));
-//                        }
-//                    }, 400);
-//                break;
             case 6:
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 Uri data = Uri.parse("mailto:ethanthomas33@gmail.com" + "?subject=HF Navigator - Feedback" + "&body=");
@@ -562,19 +527,6 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
         }
     }
 
-    private Point getLocationInView(View src, View target) {
-        final int[] l0 = new int[2];
-        src.getLocationOnScreen(l0);
-
-        final int[] l1 = new int[2];
-        target.getLocationOnScreen(l1);
-
-        l1[0] = l1[0] - l0[0] + target.getWidth() / 2;
-        l1[1] = l1[1] - l0[1] + target.getHeight();
-
-        return new Point(l1[0], l1[1]);
-    }
-
     public int calculateHeightInDp(int height) {
         final float scale = getResources().getDisplayMetrics().density;
         int hdp = (int) (height * scale + 0.5f);
@@ -593,7 +545,7 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
         startActivity(launchBrowser);
     }
 
-    public int getColor(int id) {
+    public int getColorFromResource(int id) {
         return getResources().getColor(id);
     }
 
@@ -607,22 +559,16 @@ public class Home extends ActionBarActivity implements View.OnClickListener {
                 intent.setData(Uri.parse("tel:(631) 754-5360"));
                 startActivity(intent);
                 break;
-
-//            case R.id.hhsGuidance:
-//                intent.setData(Uri.parse("tel:(631) 754-5360 405"));
-//                startActivity(intent);
-//            break;
         }
     }
 
     @Override
     public void onBackPressed() {
-
         if (TeacherDirectoryFragment.isRevealed()) {
             TeacherDirectoryFragment.hide();
-            reveal.setBackgroundColor(getColor(R.color.orange_800));
+            reveal.setBackgroundColor(getColorFromResource(R.color.orange_800));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                getWindow().setStatusBarColor(getColor(R.color.orange_950));
+                getWindow().setStatusBarColor(getColorFromResource(R.color.orange_950));
         } else {
             super.onBackPressed();
         }

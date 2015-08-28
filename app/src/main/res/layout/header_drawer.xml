@@ -58,24 +58,5 @@
                 android:textSize="14sp" />
 
         </LinearLayout>
-        <!--       <LinearLayout
-                   android:id="@+id/hhsGuidance"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:orientation="vertical">
-
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="HHS Guidance"
-                       android:textColor="#111111" />
-
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="(631) 754-5360 ext. 405"
-                       android:textColor="#111111" />
-               </LinearLayout>-->
     </LinearLayout>
-
 </LinearLayout>
